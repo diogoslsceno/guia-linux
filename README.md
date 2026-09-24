@@ -1,4 +1,4 @@
-# 🚀 Meu Hub de Guias de Configuração de Ambiente Linux
+# 🚀 Hub de Guias de Configuração de Ambiente Linux
 
 Este repositório é um hub centralizado de guias passo a passo para configuração de terminal, shell ZSH, ferramentas de desenvolvimento e personalização de ambiente no Linux.
 
