@@ -13,7 +13,8 @@ guia-linux/
 └── guias/
     ├── arch.md
     ├── debian.md
-    └── fedora.md
+    ├── fedora.md
+    └── termux.md
 ├── .gitignore
 ├── README.md
 ```
@@ -59,12 +60,27 @@ guia-linux/
 
 ---
 
+### 4. 📱 [Termux / Android (`guias/termux.md`)](./guias/termux.md)
+* **Público-Alvo:** Usuários de **Termux** no Android (smartphones e tablets).
+* **Objetivo:** Adaptar o ecossistema Linux para ambiente móvel com arquitetura Bionic libc e prefixo `$PREFIX`.
+* **Resumo do Conteúdo:**
+  * **Comandos & Atalhos Móveis:** Navegação, permissões de armazenamento do Android (`termux-setup-storage`), atalhos com teclas de volume e controle de background (`termux-wake-lock`).
+  * **Gerenciamento de Pacotes (PKG & APT):** Comandos essenciais do `pkg`, troca de mirrors (`termux-change-repo`) e repositórios extras (`tur-repo`, `root-repo`, `x11-repo`).
+  * **Setup do ZSH & Plugins:** ZSH, Oh My Zsh e Zinit adaptados para Android.
+  * **Prompt & Estética:** **Starship Prompt** nativo, fontes **Nerd Fonts** aplicadas diretamente em `~/.termux/font.ttf` e temas TOML completos.
+  * **Ferramentas de Dev:** Node.js LTS, Git com SSH Ed25519, Gemini CLI, Antigravity CLI, Python 3, OpenJDK e **VS Code via `code-server`** (para programar direto no navegador web).
+  * **Integração de Hardware (Termux:API):** Acesso a notificações, bateria, clipboard e lanterna.
+  * **Acesso Remoto & PRoot:** Servidor OpenSSH (`sshd`) na porta 8022 para acessar o celular pelo PC via Wi-Fi, barra de teclas virtuais estendidas (`extra-keys`) e `proot-distro` (Linux completo sem root).
+
+---
+
 ## 🛠️ Como Utilizar Este Repositório
 
-1. **Identifique sua distribuição:**
+1. **Identifique sua distribuição / ambiente:**
    * Se você usa Ubuntu, Debian, Linux Mint, Zorin OS ou Pop!_OS, consulte o [guias/debian.md](./guias/debian.md).
    * Se você usa Fedora ou RHEL, consulte o [guias/fedora.md](./guias/fedora.md).
    * Se você usa Arch Linux, EndeavourOS, Manjaro ou Garuda, consulte o [guias/arch.md](./guias/arch.md).
+   * Se você usa Android com Termux, consulte o [guias/termux.md](./guias/termux.md).
 
 2. **Siga a ordem do guia escolhido:** Cada arquivo foi estruturado em sequência lógica para que você possa copiar, colar e executar os comandos do início ao fim sem quebrar dependências do sistema.
 
