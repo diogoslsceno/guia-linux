@@ -406,7 +406,29 @@ flatpak install flathub com.obsproject.Studio -y
 flatpak run com.obsproject.Studio
 ```
 
-## 2.14 🛠️ GRUB Customizer
+## 2.14 🧲 qBittorrent
+
+### Opção 1: Via repositórios oficiais (DNF)
+
+```bash
+# Instala o qBittorrent pelo DNF
+sudo dnf install qbittorrent -y
+
+# Verifica a versão instalada
+qbittorrent --version
+```
+
+### Opção 2: Via Flatpak (Flathub)
+
+```bash
+# Instala o qBittorrent pelo Flathub
+flatpak install flathub org.qbittorrent.qBittorrent -y
+
+# Executa via Flatpak
+flatpak run org.qbittorrent.qBittorrent
+```
+
+## 2.15 🛠️ GRUB Customizer
 
 > ⚠️ O GRUB Customizer altera as configurações do gerenciador de boot. No Fedora, verifique a disponibilidade nos repositórios habilitados antes de instalar.
 
@@ -418,7 +440,7 @@ dnf search grub-customizer
 sudo dnf install grub-customizer -y
 ```
 
-## 2.15 🧰 JetBrains Toolbox
+## 2.16 🧰 JetBrains Toolbox
 
 ```bash
 cd ~/Downloads
@@ -434,7 +456,7 @@ cd jetbrains-toolbox-*/
 ./jetbrains-toolbox
 ```
 
-## 2.16 📱 Android Studio
+## 2.17 📱 Android Studio
 
 ### Opção Flatpak:
 
@@ -448,7 +470,7 @@ Na primeira inicialização, instale:
 - Android Emulator
 - Android SDK Platform Tools
 
-## 2.17 🔧 Git + SSH + GitHub
+## 2.18 🔧 Git + SSH + GitHub
 
 ### Criar/configurar uma chave SSH
 

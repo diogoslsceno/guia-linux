@@ -31,7 +31,7 @@ guia-linux/
   * **Gerenciamento de Pacotes (APT):** Atualização, instalação e manutenção de pacotes do sistema.
   * **Setup do ZSH & Plugins:** ZSH, Oh My Zsh, Zinit, autosuggestions e sintaxe destacada.
   * **Prompt & Estética:** **Starship Prompt** e **Nerd Fonts** (JetBrains Mono).
-  * **Ferramentas de Dev:** SDKMAN, Node.js, Docker, Java, Git, Gemini CLI, Antigravity CLI e VS Code.
+  * **Ferramentas de Dev:** SDKMAN, Node.js, Docker, Java, Git, Gemini CLI, Antigravity CLI, VS Code e qBittorrent.
   * **Customização do GRUB:** Instalação do Tema Vimix, backup, remoção de submenus/recovery e otimização de boot.
 
 ---
@@ -43,7 +43,7 @@ guia-linux/
   * **Gerenciamento de Pacotes (DNF):** Equivalentes dos comandos APT utilizando o `dnf`.
   * **Setup do ZSH & Plugins:** ZSH, Oh My Zsh e Zinit ajustados para Fedora.
   * **Prompt & Estética:** Configuração avançada de prompt e fontes no Fedora.
-  * **Ferramentas e Compatibilidade:** Docker Engine, RPM oficial do VS Code, Flatpak/Flathub e ferramentas de dev.
+  * **Ferramentas e Compatibilidade:** Docker Engine, RPM oficial do VS Code, Flatpak/Flathub, qBittorrent e ferramentas de dev.
   * **Customização do GRUB:** Instalação do Tema Vimix, backup e otimização do bootloader no Fedora.
 
 ---
@@ -55,7 +55,7 @@ guia-linux/
   * **Gerenciamento de Pacotes (Pacman & Yay):** Comandos essenciais do `pacman`, gerenciamento de órfãos e AUR.
   * **Setup do ZSH & Plugins:** ZSH, Oh My Zsh e Zinit otimizados para Arch.
   * **Prompt & Fontes:** Prompt Starship e pacotes de fontes `ttf-jetbrains-mono-nerd`.
-  * **Ferramentas e IDEs:** Docker, Java (`archlinux-java`), VS Code, Discord, JetBrains Toolbox, Android Studio e Flatpak.
+  * **Ferramentas e IDEs:** Docker, Java (`archlinux-java`), VS Code, Discord, JetBrains Toolbox, Android Studio, qBittorrent e Flatpak.
   * **Customização do GRUB:** Instalação do Tema Vimix, backup e limpeza de menus no Arch Linux.
 
 ---

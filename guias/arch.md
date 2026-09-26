@@ -461,7 +461,29 @@ sudo pacman -S obs-studio --noconfirm
 obs --version
 ```
 
-## 2.16 🛠️ GRUB Customizer
+## 2.16 🧲 qBittorrent
+
+### Opção 1: Via repositórios oficiais (Pacman)
+
+```bash
+# Instala o qBittorrent oficial dos repositórios do Arch
+sudo pacman -S qbittorrent --noconfirm
+
+# Verifica a versão instalada
+qbittorrent --version
+```
+
+### Opção 2: Via Flatpak (Flathub)
+
+```bash
+# Instala o qBittorrent pelo Flathub
+flatpak install flathub org.qbittorrent.qBittorrent -y
+
+# Executa via Flatpak
+flatpak run org.qbittorrent.qBittorrent
+```
+
+## 2.17 🛠️ GRUB Customizer
 
 > ⚠️ O GRUB Customizer altera a configuração do bootloader. No Arch Linux, recomenda-se cautela pois atualizações do GRUB podem conflitar com customizações manuais.
 
@@ -473,7 +495,7 @@ yay -S grub-customizer --noconfirm
 grub-customizer
 ```
 
-## 2.17 🔧 Git + SSH + GitHub
+## 2.18 🔧 Git + SSH + GitHub
 
 ### Criar/configurar uma chave SSH
 

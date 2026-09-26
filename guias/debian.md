@@ -577,7 +577,48 @@ Para abrir:
 obs
 ```
 
-## 2.16 🛠️ GRUB Customizer
+## 2.16 🧲 qBittorrent
+
+### Opção 1: Via PPA oficial (Recomendado para Ubuntu e derivados)
+
+```bash
+# Adiciona o repositório PPA oficial do qBittorrent
+sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable -y
+
+# Atualiza a lista de pacotes
+sudo apt update
+
+# Instala o qBittorrent
+sudo apt install qbittorrent -y
+
+# Verifica a versão instalada
+qbittorrent --version
+```
+
+### Opção 2: Via repositório oficial do sistema (Debian puro / APT padrão)
+
+```bash
+# Atualiza a lista de pacotes
+sudo apt update
+
+# Instala o qBittorrent disponível no repositório da distribuição
+sudo apt install qbittorrent -y
+
+# Verifica a instalação
+qbittorrent --version
+```
+
+### Opção 3: Via Flatpak (Flathub)
+
+```bash
+# Instala o qBittorrent pelo Flathub
+flatpak install flathub org.qbittorrent.qBittorrent -y
+
+# Executa via Flatpak
+flatpak run org.qbittorrent.qBittorrent
+```
+
+## 2.17 🛠️ GRUB Customizer
 
 > ⚠️ O GRUB Customizer altera a configuração do bootloader. Use com cuidado e mantenha uma forma de recuperação do sistema caso alguma alteração impeça o sistema de iniciar.
 
@@ -594,7 +635,7 @@ Para abrir:
 grub-customizer
 ```
 
-## 2.17 🔧 Git + SSH + GitHub
+## 2.18 🔧 Git + SSH + GitHub
 
 ### Criar/configurar uma chave SSH
 
