@@ -1,14 +1,14 @@
 # 🪟 GuiaWindows
 
-> Guia pessoal de comandos, otimizações, gerenciamento de pacotes e ferramentas de desenvolvimento para **Windows 10 e Windows 11**.
+> Guia pessoal de comandos, otimizações, atalhos de sistema, gerenciamento de pacotes, remoção de dual-boot e ferramentas de desenvolvimento para **Windows 10 e Windows 11**.
 >
-> ⚠️ **Atenção:** A maioria dos comandos administrativos deve ser executada no **PowerShell (como Administrador)**. Para abrir, pressione `Win + X` e selecione **Terminal (Administrador)** ou **PowerShell (Administrador)**.
+> ⚠️ **Atenção:** A maioria dos comandos administrativos deve ser executada no **PowerShell (como Administrador)** ou **Prompt de Comando (como Administrador)**. Para abrir rapidamente, pressione `Win + X` e selecione **Terminal (Administrador)** ou **PowerShell (Administrador)**.
 
 ---
 
 # 1. 🧹 Debloat, Limpeza e Otimização do Sistema
 
-O Windows 10 e 11 vêm de fábrica com diversos serviços de telemetria, propagandas no menu Iniciar, assistentes em segundo plano e aplicativos promocionais desnecessários que consomem CPU, disco e memória RAM.
+O Windows 10 e 11 vêm de fábrica com serviços de telemetria, propagandas no menu Iniciar, assistentes em segundo plano e aplicativos promocionais desnecessários que consomem CPU, disco e memória RAM.
 
 ## 1.1 🚀 Script de Otimização e Debloat (Win11Debloat)
 
@@ -85,11 +85,61 @@ shutdown /s /t 0
 
 ---
 
-# 3. 📦 Gerenciador de Pacotes do Windows (`winget`)
+# 3. ⌨️ Comandos Essenciais do Atalho `Win + R` (Janela Executar)
+
+A caixa de diálogo **Executar** (`Win + R`) é a forma mais rápida de abrir ferramentas administrativas, gerenciar discos, auditar hardware e acessar pastas especiais do Windows sem navegar por múltiplos menus:
+
+## 3.1 🛠️ Gerenciamento de Hardware, Discos e Sistema
+
+| Comando | Descrição |
+|---|---|
+| `diskmgmt.msc` | **Gerenciamento de Disco:** Partições, volumes, formatação e redimensionamento de discos. |
+| `devmgmt.msc` | **Gerenciador de Dispositivos:** Drivers, portas USB, placas de vídeo e adaptadores de rede. |
+| `services.msc` | **Serviços do Windows:** Inicia, pausa e configura serviços em segundo plano (como `ssh-agent`, Docker e WSL). |
+| `compmgmt.msc` | **Gerenciamento do Computador:** Painel unificado com visualizador de eventos, discos e agendador de tarefas. |
+| `msconfig` | **Configuração do Sistema:** Ajustes de inicialização do sistema operacional e modo de segurança. |
+| `taskmgr` | **Gerenciador de Tarefas:** Monitoramento de uso de CPU/RAM e processos ativos (atalho: `Ctrl + Shift + Esc`). |
+| `resmon` | **Monitor de Recursos:** Visão aprofundada em tempo real de CPU, Memória, Disco e Conexões de Rede. |
+| `perfmon` | **Monitor de Desempenho:** Contadores de métricas de telemetria e estabilidade do hardware. |
+
+## 3.2 🔐 Registro, Diretivas e Segurança
+
+| Comando | Descrição |
+|---|---|
+| `regedit` | **Editor do Registro:** Modificações de chaves do sistema (`HKEY_LOCAL_MACHINE`, `HKEY_CURRENT_USER`). |
+| `gpedit.msc` | **Editor de Diretiva de Grupo Local:** Configurações avançadas de sistema e políticas de TI (*Windows Pro/Enterprise*). |
+| `secpol.msc` | **Diretiva de Segurança Local:** Bloqueio de senhas, privilégios de contas e auditorias de segurança. |
+| `firewall.cpl` | **Firewall do Windows Defender:** Configuração de regras de portas e bloqueios de entrada/saída. |
+
+## 3.3 🌐 Redes e Painel de Controle Clássico
+
+| Comando | Descrição |
+|---|---|
+| `ncpa.cpl` | **Conexões de Rede:** Adaptadores Ethernet, Wi-Fi e placas de rede virtuais (vEthernet WSL / Hyper-V). |
+| `appwiz.cpl` | **Programas e Recursos:** Desinstalar programas clássicos e acessar o painel de recursos opcionais. |
+| `optionalfeatures` | **Recursos do Windows:** Ativar/desativar Subsistema do Windows para Linux, Hyper-V e Virtualização. |
+| `sysdm.cpl` | **Propriedades do Sistema:** Configurar **Variáveis de Ambiente** (`PATH`), nome da máquina e proteção do sistema. |
+| `control` | **Painel de Controle:** Abre a interface clássica do Painel de Controle do Windows. |
+
+## 3.4 📂 Pastas Especiais, Limpeza e Diagnóstico
+
+| Comando | Descrição |
+|---|---|
+| `shell:startup` | **Pasta Inicializar:** Abre o diretório de programas que iniciam automaticamente com o usuário. |
+| `%temp%` | **Arquivos Temporários do Usuário:** Abre a pasta de cache temporário (`AppData\Local\Temp`) para limpeza manual. |
+| `temp` | **Arquivos Temporários do Windows:** Abre a pasta de arquivos temporários da raiz do sistema (`C:\Windows\Temp`). |
+| `cleanmgr` | **Limpeza de Disco:** Utilitário nativo da Microsoft para liberar espaço em disco e apagar logs antigos. |
+| `dxdiag` | **Diagnóstico do DirectX:** Informações precisas sobre GPU, VRAM, monitor, áudio e placa-mãe. |
+| `msinfo32` | **Informações do Sistema:** Versão exata da BIOS/UEFI, Secure Boot, Processador e Memória Física. |
+| `wt` | **Windows Terminal:** Abre diretamente o terminal moderno configurado. |
+
+---
+
+# 4. 📦 Gerenciador de Pacotes do Windows (`winget`)
 
 O **Winget** (Windows Package Manager) é a ferramenta oficial e moderna da Microsoft para gerenciar instalações de software via linha de comando, equivalente ao `apt`, `dnf` ou `pacman`.
 
-## 3.1 🛠️ Comandos Essenciais do Winget
+## 4.1 🛠️ Comandos Essenciais do Winget
 
 ```powershell
 # Atualiza os índices de repositórios do Winget
@@ -116,13 +166,13 @@ winget uninstall --id <ID-do-Pacote>
 
 ---
 
-# 4. 🧰 Instalação de Ferramentas e Aplicativos de Desenvolvimento
+# 5. 🧰 Instalação de Ferramentas e Aplicativos de Desenvolvimento
 
 > 💡 **Nota de Compatibilidade:** Nem todas as ferramentas existentes no Linux possuem binários nativos no Windows. Apenas as ferramentas oficiais que possuem suporte e instaladores nativos para o Windows estão listadas nesta seção.
 
 ---
 
-## 4.1 🖥️ Terminal Moderno & Shell
+## 5.1 🖥️ Terminal Moderno & Shell
 
 ### Windows Terminal & PowerShell 7 (PS Core)
 
@@ -138,7 +188,7 @@ winget install --id Microsoft.PowerShell -e
 
 ---
 
-## 4.2 🔧 Git, SSH e GitHub
+## 5.2 🔧 Git, SSH e GitHub
 
 ### 1. Instalar o Git para Windows
 
@@ -181,7 +231,7 @@ git config --global init.defaultBranch main
 
 ---
 
-## 4.3 📊 Fastfetch & Utilitários CLI
+## 5.3 📊 Fastfetch & Utilitários CLI
 
 ```powershell
 # Instala Fastfetch (informações do sistema e hardware no terminal)
@@ -193,7 +243,7 @@ winget install --id 7zip.7zip -e
 
 ---
 
-## 4.4 🟢 Node.js e npm
+## 5.4 🟢 Node.js e npm
 
 ```powershell
 # Instala a versão LTS oficial do Node.js (inclui o gerenciador npm)
@@ -206,7 +256,7 @@ npm -v
 
 ---
 
-## 4.5 🤖 Gemini CLI e Gtop
+## 5.5 🤖 Gemini CLI e Gtop
 
 Com o Node.js e npm instalados:
 
@@ -223,7 +273,7 @@ gemini --version
 
 ---
 
-## 4.6 🧑‍💻 Visual Studio Code
+## 5.6 🧑‍💻 Visual Studio Code
 
 ```powershell
 # Instala o Visual Studio Code estável oficial
@@ -235,7 +285,7 @@ code --version
 
 ---
 
-## 4.7 ☕ Java / OpenJDK
+## 5.7 ☕ Java / OpenJDK
 
 Instale o **Microsoft Build of OpenJDK 21 LTS** ou **Eclipse Temurin OpenJDK 21**:
 
@@ -253,7 +303,7 @@ javac -version
 
 ---
 
-## 4.8 🐍 Python 3
+## 5.8 🐍 Python 3
 
 ```powershell
 # Instala o interpretador oficial Python 3
@@ -266,7 +316,7 @@ pip --version
 
 ---
 
-## 4.9 🐳 Docker Desktop para Windows
+## 5.9 🐳 Docker Desktop para Windows
 
 O **Docker Desktop** no Windows utiliza o backend leve do WSL 2 para executar contêineres Linux nativamente com aceleração total:
 
@@ -279,7 +329,7 @@ winget install --id Docker.DockerDesktop -e
 
 ---
 
-## 4.10 🧲 qBittorrent
+## 5.10 🧲 qBittorrent
 
 ```powershell
 # Instala o qBittorrent oficial para Windows
@@ -288,7 +338,7 @@ winget install --id qBittorrent.qBittorrent -e
 
 ---
 
-## 4.11 💬 Discord, OBS Studio e Ferramentas Multimídia
+## 5.11 💬 Discord, OBS Studio e Ferramentas Multimídia
 
 ```powershell
 # Discord
@@ -310,11 +360,11 @@ winget install --id SublimeHQ.SublimeMerge -e
 
 ---
 
-# 5. 🎨 Prompt, Estética e Fontes (Starship + JetBrains Mono)
+# 6. 🎨 Prompt, Estética e Fontes (Starship + JetBrains Mono)
 
 Você pode desfrutar da mesma estética moderna do Starship e fontes Nerd Fonts no terminal do Windows que temos no Linux!
 
-## 5.1 🔤 Instalar a Fonte JetBrains Mono Nerd Font
+## 6.1 🔤 Instalar a Fonte JetBrains Mono Nerd Font
 
 ```powershell
 # Instala a fonte JetBrains Mono Nerd Font oficial via Winget
@@ -330,7 +380,7 @@ winget install --id RomanSetik.JetBrainsMonoNerdFont -e
 
 ---
 
-## 5.2 🚀 Instalar o Starship Prompt
+## 6.2 🚀 Instalar o Starship Prompt
 
 ```powershell
 # Instala o Starship Prompt via Winget
@@ -339,7 +389,7 @@ winget install --id Starship.Starship -e
 
 ---
 
-## 5.3 🐚 Configurar o Perfil do PowerShell (`$PROFILE`)
+## 6.3 🐚 Configurar o Perfil do PowerShell (`$PROFILE`)
 
 O arquivo `$PROFILE` no Windows equivale ao `~/.zshrc` ou `~/.bashrc` do Linux.
 
@@ -403,7 +453,7 @@ Copy-Item ".\dotfiles\starship.toml" "$HOME\.config\starship.toml"
 
 ---
 
-# 6. 🐧 Windows Subsystem for Linux (WSL 2)
+# 7. 🐧 Windows Subsystem for Linux (WSL 2)
 
 Se você precisa de um ambiente Linux 100% nativo com kernel real para compilações, Docker ou ferramentas Unix que não rodam nativamente no Windows, ative o WSL 2 com um único comando:
 
@@ -417,14 +467,150 @@ Após o término da instalação e reinicialização, consulte o nosso guia dedi
 
 ---
 
-# 7. ⚖️ O Que NÃO Existe ou Não se Aplica no Windows (e o que usar)
+# 8. 🔄 Guia Completo — Remoção Limpa e Segura do Dual Boot (Desinstalar Linux)
+
+> [!CAUTION]
+> **Por que este procedimento é fundamental?**
+> Apenas formatar ou excluir a partição do Linux pelo Gerenciamento de Disco **não remove o inicializador GRUB da partição EFI**. Ao reiniciar o computador, a placa-mãe (UEFI) tentará carregar o GRUB que não existe mais, travando a máquina na tela de erro:
+> `error: no such partition. Entering rescue mode... grub rescue>`
+> Siga rigorosamente os passos abaixo para remover o Linux e restaurar o boot 100% direto pelo Windows Boot Manager.
+
+---
+
+## Passo 1: Excluir as Partições Linux e Recuperar Espaço em Disco
+
+1. Pressione `Win + R`, digite **`diskmgmt.msc`** e pressione `Enter` (ou clique com botão direito no botão Iniciar → **Gerenciamento de Disco**).
+2. Localize a partição do Linux (geralmente identificada pelo tamanho que você reservou, sem sistema de arquivos NTFS reconhecido ou marcada como partição primária vazia/RAW).
+3. Clique com o botão direito sobre a partição do Linux e selecione **"Excluir volume..."**, confirmando com **Sim**.
+4. A partição se tornará **"Espaço Não Alocado"** (barra preta).
+5. **(Opcional - Estender Windows):** Para reaproveitar esse espaço no Windows, clique com o botão direito na partição do seu Windows (`C:`) e selecione **"Estender volume..."**. Avance no assistente até o fim.
+
+---
+
+## Passo 2: Acessar a Partição do Sistema EFI (`ESP`) via DiskPart
+
+Como a partição EFI é protegida e oculta pelo Windows, vamos atribuir a ela uma letra de unidade temporária:
+
+1. Abra o **Prompt de Comando (CMD) como Administrador** ou **PowerShell como Administrador**.
+2. Digite o utilitário de disco:
+   ```cmd
+   diskpart
+   ```
+3. Liste todos os volumes do computador:
+   ```cmd
+   list vol
+   ```
+4. Localize o volume que possui o sistema de arquivos **FAT32**, tamanho aproximado de **100 MB a 512 MB** e a etiqueta **"Sistema"** na coluna de informações. Exemplo:
+   ```text
+   Volume 1         ESP          FAT32  Partição     512 MB  Íntegro    Sistema
+   ```
+5. Selecione o volume correspondente (substitua o número `1` pelo número identificado no seu computador):
+   ```cmd
+   select vol 1
+   ```
+6. Atribua uma letra de unidade temporária (por exemplo, a letra **`J:`** ou outra letra livre):
+   ```cmd
+   assign letter=j
+   ```
+   *Mensagem esperada: `DiskPart atribuiu com êxito a letra de unidade ou o ponto de montagem.`*
+7. Saia do utilitário DiskPart para retornar ao prompt de comando:
+   ```cmd
+   exit
+   ```
+   *(Mantenha o terminal aberto!)*
+
+---
+
+## Passo 3: Apagar os Arquivos do Inicializador Linux (GRUB) na EFI
+
+Você pode realizar a exclusão dos arquivos do GRUB diretamente via **Terminal** (mais rápido) ou pelo **Método Gráfico**:
+
+### Opção A: Exclusão Rápida via Terminal (Recomendado)
+
+No mesmo terminal administrativo em que você estava:
+
+```cmd
+# Entra na unidade EFI montada
+j:
+
+# Acessa o diretório de inicializadores UEFI
+cd EFI
+
+# Lista os inicializadores instalados
+dir
+```
+
+Você verá a pasta `Microsoft`, a pasta `Boot` e as pastas correspondentes às distribuições Linux instaladas (como `ubuntu`, `debian`, `fedora`, `arch` ou similar).
+
+> ⚠️ **ATENÇÃO MÁXIMA:** **NUNCA** apague as pastas `Microsoft` ou `Boot`! Elas são os inicializadores do próprio Windows.
+
+Remova apenas a pasta da sua distribuição Linux:
+
+```cmd
+# Para Ubuntu / Mint / Pop:
+rmdir /s /q ubuntu
+
+# Para Debian:
+rmdir /s /q debian
+
+# Para Fedora:
+rmdir /s /q fedora
+
+# Para Arch Linux:
+rmdir /s /q arch
+```
+
+---
+
+### Opção B: Exclusão com Interface Gráfica (Explorador com Privilégios Administrativos)
+
+Caso prefira excluir com o mouse:
+
+1. Abra o **Gerenciador de Tarefas** (`Ctrl + Shift + Esc`).
+2. Clique no menu superior em **"Executar nova tarefa"** (ou *Arquivo → Executar nova tarefa*).
+3. Marque a caixa de seleção: **☑️ "Criar esta tarefa com privilégios administrativos"**.
+4. Clique no botão **"Procurar..."**. Isso abrirá uma janela com privilégios de Administrador total.
+5. No painel esquerdo, clique em **"Este Computador"** e acesse a unidade **`ESP (J:)`**.
+6. Entre na pasta **`EFI`**.
+7. Selecione a pasta da distribuição instalada (`ubuntu`, `debian`, etc.) e pressione `Shift + Delete` para excluir permanentemente.
+8. Feche o Gerenciador de Tarefas e a janela de navegação.
+
+---
+
+## Passo 4: Desmontar a Partição EFI e Liberar a Letra
+
+Após apagar a pasta do Linux, remova a letra de montagem para que a partição EFI volte a ficar oculta e segura contra modificações acidentais:
+
+No prompt de comando administrativo:
+
+```cmd
+diskpart
+select vol 1
+remove letter=j
+exit
+```
+
+---
+
+## Passo 5: Confirmar e Reiniciar o Sistema
+
+1. Abra o Explorador de Arquivos e certifique-se de que a unidade `J:` não aparece mais em "Este Computador".
+2. Reinicie o seu computador:
+   ```cmd
+   shutdown /r /t 0
+   ```
+3. O computador inicializará diretamente no **Windows 10/11**, com tempo de boot reduzido e sem nenhuma pendência do menu GRUB!
+
+---
+
+# 9. ⚖️ O Que NÃO Existe ou Não se Aplica no Windows (e o que usar)
 
 Para evitar tentativas de executar comandos incompatíveis, veja o comparativo das ferramentas exclusivas de ecossistemas Linux:
 
 | Recurso do Linux | Por que não se aplica no Windows | O que utilizar no Windows |
 |---|---|---|
-| **GRUB / Vimix Theme** | O Windows não utiliza o bootloader GRUB; ele usa o **Windows Boot Manager (BCD)** gerenciado pela partição EFI. | Se você usa Dual-Boot (Windows + Linux), o tema GRUB deve ser configurado dentro do Linux (consulte o guia da sua distro). O GRUB gerencia a inicialização de ambos. |
-| **APT / DNF / Pacman / Zypper** | São gerenciadores de pacotes específicos de distribuições Linux baseadas em `.deb`, `.rpm` ou binários Arch. | Utilize o **`winget`** oficial ou o **`scoop`**. |
-| **ZSH / Zinit / Oh My Zsh** | ZSH é um interpretador de shell POSIX para ambientes Unix-like. | Utilize o **PowerShell 7 moderno** com **PSReadLine** e **Starship Prompt** (Seção 5), ou utilize o **WSL 2**. |
+| **GRUB / Vimix Theme** | O Windows não utiliza o bootloader GRUB; ele usa o **Windows Boot Manager (BCD)** gerenciado pela partição EFI. | Para dual boot, o GRUB fica no Linux. Se desejar remover o dual boot, siga a [Seção 8](#8--guia-completo--remoção-limpa-e-segura-do-dual-boot-desinstalar-linux). |
+| **APT / DNF / Pacman / Zypper** | São gerenciadores de pacotes específicos de distribuições Linux baseadas em `.deb`, `.rpm` ou binários Arch. | Utilize o **`winget`** oficial ou o **`scoop`** (Seção 4). |
+| **ZSH / Zinit / Oh My Zsh** | ZSH é um interpretador de shell POSIX para ambientes Unix-like. | Utilize o **PowerShell 7 moderno** com **PSReadLine** e **Starship Prompt** (Seção 6), ou utilize o **WSL 2**. |
 | **Ptyxis / GNOME Tweaks / GSettings** | Ptyxis e GNOME são parte do ambiente de desktop GNOME para Linux. | Utilize o **Windows Terminal** e as **Configurações do Windows**. |
 | **Permissões POSIX (`chmod`, `chown`)** | O sistema de arquivos NTFS no Windows utiliza Listas de Controle de Acesso (ACLs) em vez de octais de permissão Unix. | O PowerShell gerencia arquivos diretamente no escopo do seu usuário sem necessidade de `chmod +x`. |

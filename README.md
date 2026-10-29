@@ -127,10 +127,12 @@ Ou execute diretamente o script dedicado para a sua distribuição:
 * **Público-Alvo:** Desenvolvedores e entusiastas utilizando ambiente nativo **Windows 10 e 11**.
 * **Resumo do Conteúdo:**
   * **Debloat & Otimização:** Remoção de telemetria, bloatwares e propagandas via script oficial Win11Debloat (`& ([scriptblock]::Create((irm "https://debloat.raphi.re/")))`) e WinUtil.
+  * **Atalhos do Sistema (`Win + R`):** Lista categorizada de comandos rápidos da caixa Executar (`diskmgmt.msc`, `services.msc`, `ncpa.cpl`, `sysdm.cpl`, etc.).
   * **Gerenciador de Pacotes (Winget):** Comandos de busca, atualização em lote e instalação silenciosa de programas.
   * **Terminal Moderno & Shell:** Windows Terminal, PowerShell 7 (PS Core) e tabela comparativa de comandos Linux vs PowerShell.
   * **Estética & Prompt:** Starship Prompt, JetBrains Mono Nerd Font e autocompletar inteligente com PSReadLine no `$PROFILE`.
   * **Ferramentas Nativas Compatíveis:** Git + SSH Agent, Node.js LTS, OpenJDK 21, Python 3, Docker Desktop, VS Code, Fastfetch, qBittorrent, Discord e Gemini CLI.
+  * **Remoção de Dual Boot:** Procedimento passo a passo para excluir o Linux, recuperar espaço em disco e remover o GRUB da partição EFI sem travar o boot.
   * **Tabela de Compatibilidade:** Mapeamento do que é exclusivo do Linux (GRUB, ZSH, etc.) e seus equivalentes no Windows.
 
 ---
