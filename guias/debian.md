@@ -139,15 +139,24 @@ software-properties-common \
 apt-transport-https
 ```
 
-## 2.2 🌳 Tree
+## 2.2 🖥️ Ferramentas do sistema
 
 ```bash
+# Estrutura de diretórios em formato de árvore
 sudo apt install tree -y
-```
 
-## 2.3 🖥️ Ferramentas do sistema
+# Informações do sistema e hardware
+sudo apt install fastfetch -y
 
-```bash
+# Monitoramento de processos do sistema
+sudo apt install htop -y
+
+# Monitor interativo de recursos via terminal (gtop - requer Node.js/npm)
+sudo npm install -g gtop 2>/dev/null || true
+
+# Gerenciador de partições e discos
+sudo apt install gparted -y
+
 # Personalização do GNOME
 sudo apt install gnome-tweaks -y
 
@@ -157,28 +166,19 @@ sudo apt install chrome-gnome-shell -y
 # Gerenciador de extensões do GNOME
 sudo apt install gnome-shell-extension-manager -y
 
-# Informações do sistema
-sudo apt install fastfetch -y
-
-# Backup
+# Backup do sistema
 sudo apt install timeshift -y
 
 # Efeito inspirado no filme Matrix
 sudo apt install cmatrix -y
 
-# Visualização de áudio
+# Visualização de áudio no terminal
 sudo apt install cava -y
-
-# Monitoramento do sistema
-sudo apt install htop -y
-
-# Gerenciador de discos
-sudo apt install gparted -y
 ```
 
 > 💡 Nota: O `neofetch` foi descontinuado na maioria dos repositórios Debian/Ubuntu mais recentes, sendo recomendado utilizar o `fastfetch`.
 
-## 2.4 🟢 Node.js e npm
+## 2.3 🟢 Node.js e npm
 
 ### Opção 1: Via repositórios oficiais da distribuição
 
@@ -207,17 +207,11 @@ node -v
 npm -v
 ```
 
-## 2.5 🤖 Gemini CLI, Gtop e Antigravity
+## 2.4 🚀 Antigravity CLI (agy)
 
-> ⚠️ Certifique-se de que o Node.js e o npm estão instalados (Seção 2.4) antes de executar os comandos `npm`.
+O **Antigravity CLI** (`agy`) é o assistente inteligente avançado de terminal e desenvolvimento.
 
 ```bash
-# Instala o monitor gtop globalmente via npm
-sudo npm install -g gtop
-
-# Instala o Gemini CLI globalmente
-sudo npm install -g @google/gemini-cli
-
 # Instala o Antigravity CLI
 curl -fsSL https://antigravity.google/cli/install.sh | bash
 
@@ -227,14 +221,11 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 # Recarrega a sessão do shell
 source ~/.zshrc
 
-# Verifica as instalações
-node -v
-npm -v
-gemini --version
+# Verifica a instalação
 agy --version
 ```
 
-## 2.6 🧑‍💻 Visual Studio Code
+## 2.5 🧑‍💻 Visual Studio Code
 
 ### Opção 1: Via Repositório Oficial Microsoft APT (Atualizações Automáticas)
 
@@ -278,7 +269,7 @@ code --version
 sudo snap install --classic code
 ```
 
-## 2.7 🔀 Meld e Sublime Merge
+## 2.6 🔀 Meld e Sublime Merge
 
 ```bash
 # Meld
@@ -288,7 +279,7 @@ sudo apt install meld -y
 sudo snap install sublime-merge --classic
 ```
 
-## 2.8 🐳 Docker e Docker Compose
+## 2.7 🐳 Docker e Docker Compose
 
 ### Para Ubuntu:
 
@@ -359,7 +350,7 @@ sudo usermod -aG docker $USER
 
 > Depois de adicionar o usuário ao grupo `docker`, encerre a sessão ou execute `newgrp docker` para a alteração entrar em vigor.
 
-## 2.9 💬 Discord
+## 2.8 💬 Discord
 
 ```bash
 cd ~/Downloads
@@ -380,7 +371,7 @@ which discord
 discord --version
 ```
 
-## 2.10 ☕ Java / OpenJDK
+## 2.9 ☕ Java / OpenJDK
 
 ```bash
 # Atualiza a lista de pacotes
@@ -412,7 +403,7 @@ which javac
 readlink -f "$(which java)"
 ```
 
-## 2.11 🐍 Anaconda
+## 2.10 🐍 Anaconda
 
 ```bash
 # Atualiza o sistema
@@ -450,7 +441,7 @@ conda --version
 conda info --base
 ```
 
-## 2.12 📦 Flatpak
+## 2.11 📦 Flatpak
 
 ```bash
 # Instala o Flatpak
@@ -525,7 +516,7 @@ flatpak update -y
 flatpak uninstall com.jetbrains.IntelliJ-IDEA-Community
 ```
 
-## 2.13 🧰 JetBrains Toolbox
+## 2.12 🧰 JetBrains Toolbox
 
 > O JetBrains Toolbox é a forma recomendada de instalar e gerenciar IDEs JetBrains de forma centralizada.
 
@@ -551,7 +542,7 @@ Pelo Toolbox, é recomendado instalar:
 - CLion
 - PhpStorm
 
-## 2.14 📱 Android Studio
+## 2.13 📱 Android Studio
 
 ```bash
 cd ~/Downloads
@@ -581,7 +572,7 @@ Na primeira inicialização, certifique-se de marcar e instalar:
 - Android Emulator
 - Android SDK Platform Tools
 
-## 2.15 🎥 OBS Studio
+## 2.14 🎥 OBS Studio
 
 ```bash
 # Atualiza a lista de pacotes
@@ -599,7 +590,7 @@ Para abrir:
 obs
 ```
 
-## 2.16 🧲 qBittorrent
+## 2.15 🧲 qBittorrent
 
 ### Opção 1: Via PPA oficial (Recomendado para Ubuntu e derivados)
 
@@ -640,7 +631,7 @@ flatpak install flathub org.qbittorrent.qBittorrent -y
 flatpak run org.qbittorrent.qBittorrent
 ```
 
-## 2.17 🛠️ GRUB Customizer
+## 2.16 🛠️ GRUB Customizer
 
 > ⚠️ O GRUB Customizer altera a configuração do bootloader. Use com cuidado e mantenha uma forma de recuperação do sistema caso alguma alteração impeça o sistema de iniciar.
 
@@ -657,7 +648,7 @@ Para abrir:
 grub-customizer
 ```
 
-## 2.18 🔧 Git + SSH + GitHub
+## 2.17 🔧 Git + SSH + GitHub
 
 ### Criar/configurar uma chave SSH
 

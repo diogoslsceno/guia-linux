@@ -129,18 +129,17 @@ sudo zypper install -y nodejs npm
 # Verifica versões
 node -v
 npm -v
+
+# Opcional: Instala o monitor de recursos interativo de terminal gtop
+sudo npm install -g gtop
 ```
 
-## 2.3 🤖 Gemini CLI, Gtop e Antigravity
+## 2.3 🚀 Antigravity CLI (agy)
+
+O **Antigravity CLI** (`agy`) é o assistente inteligente avançado de terminal e desenvolvimento.
 
 ```bash
-# Monitor gtop global via npm
-sudo npm install -g gtop
-
-# Gemini CLI global
-sudo npm install -g @google/gemini-cli
-
-# Antigravity CLI
+# Instala o Antigravity CLI
 curl -fsSL https://antigravity.google/cli/install.sh | bash
 
 # Exporta binários locais para o PATH
@@ -148,7 +147,6 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
 
 # Validação
-gemini --version
 agy --version
 ```
 

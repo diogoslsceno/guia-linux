@@ -64,7 +64,7 @@ Ou execute diretamente o script dedicado para a sua distribuição:
   * **Gerenciamento de Pacotes (APT):** Atualização, instalação e manutenção de pacotes do sistema.
   * **Setup do ZSH & Plugins:** ZSH, Oh My Zsh, Zinit, autosuggestions e sintaxe destacada.
   * **Prompt & Estética:** **Starship Prompt** e **Nerd Fonts** (JetBrains Mono).
-  * **Ferramentas de Dev:** SDKMAN, Node.js, Docker, Java, Git, Gemini CLI, Antigravity CLI, VS Code e qBittorrent.
+  * **Ferramentas de Dev:** SDKMAN, Node.js, Docker, Java, Git, Antigravity CLI, VS Code e qBittorrent.
   * **Customização do GRUB:** Instalação do Tema Vimix, backup, remoção de submenus/recovery e otimização de boot.
 
 ---
@@ -108,7 +108,7 @@ Ou execute diretamente o script dedicado para a sua distribuição:
   * **Gerenciamento de Pacotes (PKG & APT):** Comandos essenciais, troca de mirrors (`termux-change-repo`) e repositórios extras (`tur-repo`, `root-repo`, `x11-repo`).
   * **Setup do ZSH & Plugins:** ZSH, Oh My Zsh e Zinit adaptados para Android.
   * **Prompt & Estética:** Starship Prompt, fontes Nerd Fonts (`~/.termux/font.ttf`) e barra de teclas extras virtuais (`extra-keys`).
-  * **Ferramentas de Dev:** Node.js LTS, Git com SSH Ed25519, Gemini CLI, Antigravity CLI, Python 3, OpenJDK e **VS Code via `code-server`**.
+  * **Ferramentas de Dev:** Node.js LTS, Git com SSH Ed25519, Antigravity CLI, Python 3, OpenJDK e **VS Code via `code-server`**.
   * **Integração de Hardware & Acesso Remoto:** `termux-api` (bateria, clipboard, lanterna), servidor OpenSSH (porta 8022) e `proot-distro` (Linux completo sem root).
 
 ---
@@ -131,7 +131,7 @@ Ou execute diretamente o script dedicado para a sua distribuição:
   * **Gerenciador de Pacotes (Winget):** Comandos de busca, atualização em lote e instalação silenciosa de programas.
   * **Terminal Moderno & Shell:** Windows Terminal, PowerShell 7 (PS Core) e tabela comparativa de comandos Linux vs PowerShell.
   * **Estética & Prompt:** Starship Prompt, JetBrains Mono Nerd Font e autocompletar inteligente com PSReadLine no `$PROFILE`.
-  * **Ferramentas Nativas Compatíveis:** Git + SSH Agent, Node.js LTS, OpenJDK 21, Python 3, Docker Desktop, VS Code, Fastfetch, qBittorrent, Discord e Gemini CLI.
+  * **Ferramentas Nativas Compatíveis:** Git + SSH Agent, Node.js LTS, OpenJDK 21, Python 3, Docker Desktop, VS Code, Fastfetch, qBittorrent, Discord e Antigravity CLI.
   * **Remoção de Dual Boot:** Procedimento passo a passo para excluir o Linux, recuperar espaço em disco e remover o GRUB da partição EFI sem travar o boot.
   * **Tabela de Compatibilidade:** Mapeamento do que é exclusivo do Linux (GRUB, ZSH, etc.) e seus equivalentes no Windows.
 

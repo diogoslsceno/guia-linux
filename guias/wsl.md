@@ -114,22 +114,24 @@ Você tem duas abordagens principais:
 2. Em **Settings → Resources → WSL Integration**, ative sua distribuição.
 
 ### Opção 2: Docker Engine Nativo no WSL (Leve e sem interface gráfica)
-Com o `systemd=true` ativado em `/etc/wsl.conf`, instale o Docker diretamente no Linux (consulte o [guias/debian.md](./debian.md#28--docker-e-docker-compose)).
+Com o `systemd=true` ativado em `/etc/wsl.conf`, instale o Docker diretamente no Linux (consulte o [guias/debian.md](./debian.md#27--docker-e-docker-compose)).
 
-## 3.4 🤖 Gemini CLI e Antigravity CLI
+## 3.4 🚀 Antigravity CLI (agy)
 
 ```bash
 # Node.js LTS via NodeSource
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt install -y nodejs
 
-# Gemini CLI e Antigravity
-sudo npm install -g @google/gemini-cli
+# Instala o Antigravity CLI
 curl -fsSL https://antigravity.google/cli/install.sh | bash
 
 # Exportar PATH
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
+
+# Verifica a instalação
+agy --version
 ```
 
 ## 3.5 🧲 qBittorrent no WSL

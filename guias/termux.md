@@ -210,20 +210,20 @@ clang \
 make
 ```
 
-## 2.2 🌳 Tree
+## 2.2 🖥️ Ferramentas CLI do sistema
 
 ```bash
+# Estrutura de diretórios em árvore
 pkg install tree -y
-```
 
-## 2.3 🖥️ Ferramentas CLI do sistema
-
-```bash
 # Informações detalhadas do sistema e hardware
 pkg install fastfetch -y
 
 # Monitor interativo de processos
 pkg install htop -y
+
+# Monitor interativo de recursos via terminal (gtop - requer Node.js/npm)
+npm install -g gtop 2>/dev/null || true
 
 # Multiplexador de terminal (essencial para dividir tela e manter sessões ativas)
 pkg install tmux -y
@@ -241,7 +241,7 @@ pkg install cmatrix -y
 pkg install termux-tools -y
 ```
 
-## 2.4 🟢 Node.js e npm
+## 2.3 🟢 Node.js e npm
 
 ```bash
 # Instala o Node.js versão LTS (recomendada)
@@ -258,16 +258,12 @@ npm -v
 > 💡 **Nota de Configuração de Binários Globais do NPM:**
 > No Termux, pacotes globais do npm são instalados diretamente no `$PREFIX/bin`, ficando imediatamente disponíveis no terminal sem necessidade de `sudo`.
 
-## 2.5 🤖 Gemini CLI, Gtop e Antigravity
+## 2.4 🚀 Antigravity CLI (agy)
+
+O **Antigravity CLI** (`agy`) é o assistente inteligente avançado de terminal e desenvolvimento.
 
 ```bash
-# Monitor de recursos em Node.js
-npm install -g gtop
-
-# Google Gemini CLI global
-npm install -g @google/gemini-cli
-
-# Antigravity CLI
+# Instala o Antigravity CLI
 curl -fsSL https://antigravity.google/cli/install.sh | bash
 
 # Garante a inclusão dos diretórios locais no PATH
@@ -276,14 +272,11 @@ echo 'export PATH="$HOME/.local/bin:$PREFIX/bin:$PATH"' >> ~/.zshrc
 # Aplica as alterações
 source ~/.zshrc
 
-# Verificação das ferramentas
-node -v
-npm -v
-gemini --version
+# Verificação da ferramenta
 agy --version
 ```
 
-## 2.6 🧑‍💻 Visual Studio Code no Termux (`code-server`)
+## 2.5 🧑‍💻 Visual Studio Code no Termux (`code-server`)
 
 Como o VS Code tradicional é um aplicativo desktop (Electron), a forma mais estável e produtiva de programar com VS Code nativamente no celular ou tablet é utilizando o **`code-server`** (VS Code rodando em backend no Termux e acessado via navegador web).
 
@@ -321,7 +314,7 @@ http://localhost:8080
 
 > 💡 **Dica de Produtividade:** No navegador do Android, toque no menu de 3 pontos e escolha **"Adicionar à tela inicial"** para transformar o VS Code em um Web App (PWA) em tela cheia com suporte a teclado físico e mouse.
 
-## 2.7 🔧 Git + SSH + GitHub
+## 2.6 🔧 Git + SSH + GitHub
 
 ### Criar e configurar chave SSH no dispositivo
 
@@ -392,7 +385,7 @@ git commit -m "feat: implementa nova funcionalidade via Termux"
 git push
 ```
 
-## 2.8 🐍 Python & Ambientes Virtuais
+## 2.7 🐍 Python & Ambientes Virtuais
 
 ```bash
 # Instala Python 3, pip e ferramentas de compilação de wheels
@@ -415,7 +408,7 @@ source ~/meu-env/bin/activate
 deactivate
 ```
 
-## 2.9 ☕ Java / OpenJDK & Outras Linguagens
+## 2.8 ☕ Java / OpenJDK & Outras Linguagens
 
 ```bash
 # Instala o OpenJDK 21 LTS no Termux (ou openjdk-17 caso prefira)
@@ -435,7 +428,7 @@ pkg install golang -y
 go version
 ```
 
-## 2.10 🐧 PRoot Distro (Linux Completo sem Root)
+## 2.9 🐧 PRoot Distro (Linux Completo sem Root)
 
 O `proot-distro` é uma ferramenta oficial que permite executar sistemas operacionais Linux completos (como Debian, Ubuntu, Arch Linux, Alpine, Fedora) isolados dentro do Termux sem necessidade de desbloqueio de bootloader ou root.
 
@@ -455,7 +448,7 @@ proot-distro login debian
 
 Dentro da distribuição PRoot, você tem um ambiente Linux com padrão FHS (`/usr`, `/etc`, `/bin`), permitindo rodar `apt`, compilar pacotes glibc padrão e isolar dependências complexas. Para sair de volta ao Termux, basta digitar `exit`.
 
-## 2.11 📱 Termux:API (Integração com Hardware Android)
+## 2.10 📱 Termux:API (Integração com Hardware Android)
 
 O pacote `termux-api` permite controlar o hardware do smartphone por meio de scripts e comandos no terminal (requer a instalação do app companheiro **Termux:API** via F-Droid).
 

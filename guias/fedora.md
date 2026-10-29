@@ -151,22 +151,19 @@ make \
 python3
 ```
 
-## 2.2 🌳 Tree
+## 2.2 🖥️ Ferramentas do sistema
 
 ```bash
+# Estrutura de diretórios em árvore
 sudo dnf install tree -y
-```
 
-## 2.3 🖥️ Ferramentas do sistema
-
-```bash
 # Personalização do GNOME
 sudo dnf install gnome-tweaks -y
 
 # Gerenciador de extensões do GNOME
 sudo dnf install gnome-extensions-app -y
 
-# Informações do sistema
+# Informações do sistema e hardware
 sudo dnf install fastfetch -y
 
 # Backup do sistema
@@ -181,11 +178,14 @@ sudo dnf install cava -y
 # Monitoramento de processos
 sudo dnf install htop -y
 
+# Monitor interativo de recursos via terminal (gtop - requer Node.js/npm)
+sudo npm install -g gtop 2>/dev/null || true
+
 # Gerenciador de partições de disco
 sudo dnf install gparted -y
 ```
 
-## 2.4 🟢 Node.js e npm
+## 2.3 🟢 Node.js e npm
 
 ```bash
 # Instala Node.js e npm dos repositórios oficiais do Fedora
@@ -196,15 +196,11 @@ node -v
 npm -v
 ```
 
-## 2.5 🤖 Gemini CLI, Gtop e Antigravity
+## 2.4 🚀 Antigravity CLI (agy)
+
+O **Antigravity CLI** (`agy`) é o assistente inteligente avançado de terminal e desenvolvimento.
 
 ```bash
-# Instala o monitor gtop globalmente via npm
-sudo npm install -g gtop
-
-# Instala o Gemini CLI globalmente
-sudo npm install -g @google/gemini-cli
-
 # Instala o Antigravity CLI
 curl -fsSL https://antigravity.google/cli/install.sh | bash
 
@@ -214,14 +210,11 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 # Recarrega o ZSH
 source ~/.zshrc
 
-# Verifica as instalações
-node -v
-npm -v
-gemini --version
+# Verifica a instalação
 agy --version
 ```
 
-## 2.6 🧑‍💻 Visual Studio Code
+## 2.5 🧑‍💻 Visual Studio Code
 
 ### Instalação pelo repositório RPM oficial da Microsoft
 
@@ -242,7 +235,7 @@ sudo dnf install code -y
 code --version
 ```
 
-## 2.7 🔀 Meld e Sublime Merge
+## 2.6 🔀 Meld e Sublime Merge
 
 ```bash
 # Meld (Oficial)
@@ -251,7 +244,7 @@ sudo dnf install meld -y
 
 > Para o Sublime Merge no Fedora, você pode utilizar o repositório RPM oficial da Sublime ou instalar via Flatpak/tarball.
 
-## 2.8 🐳 Docker Engine e Docker Compose
+## 2.7 🐳 Docker Engine e Docker Compose
 
 ```bash
 # Remove versões conflitantes antigas caso existam
@@ -290,7 +283,7 @@ sudo usermod -aG docker $USER
 
 > Após adicionar seu usuário ao grupo `docker`, encerre a sessão ou execute `newgrp docker` para aplicar a alteração.
 
-## 2.9 💬 Discord
+## 2.8 💬 Discord
 
 No Fedora, a opção mais prática e mantida para o Discord é o **Flatpak** via Flathub.
 
@@ -302,7 +295,7 @@ flatpak install flathub com.discordapp.Discord -y
 flatpak run com.discordapp.Discord
 ```
 
-## 2.10 ☕ Java / OpenJDK
+## 2.9 ☕ Java / OpenJDK
 
 ```bash
 # Instala a versão LTS do OpenJDK (ex: OpenJDK 21) ou versão mais recente (java-latest-openjdk)
@@ -321,7 +314,7 @@ which javac
 readlink -f "$(which java)"
 ```
 
-## 2.11 🐍 Anaconda
+## 2.10 🐍 Anaconda
 
 ```bash
 # Atualiza o sistema e instala dependências
@@ -354,7 +347,7 @@ conda --version
 conda info --base
 ```
 
-## 2.12 📦 Flatpak
+## 2.11 📦 Flatpak
 
 O Fedora Workstation já vem com o Flatpak integrado por padrão. Ative o Flathub para acessar todo o repositório:
 
@@ -395,7 +388,7 @@ flatpak install flathub com.jetbrains.PhpStorm -y
 flatpak install flathub com.google.AndroidStudio -y
 ```
 
-## 2.13 🎥 OBS Studio
+## 2.12 🎥 OBS Studio
 
 ```bash
 # Instala o OBS Studio pelo Flathub (recomendado para Fedora)
@@ -405,7 +398,7 @@ flatpak install flathub com.obsproject.Studio -y
 flatpak run com.obsproject.Studio
 ```
 
-## 2.14 🧲 qBittorrent
+## 2.13 🧲 qBittorrent
 
 ### Opção 1: Via repositórios oficiais (DNF)
 
@@ -427,7 +420,7 @@ flatpak install flathub org.qbittorrent.qBittorrent -y
 flatpak run org.qbittorrent.qBittorrent
 ```
 
-## 2.15 🛠️ GRUB Customizer
+## 2.14 🛠️ GRUB Customizer
 
 > ⚠️ O GRUB Customizer altera as configurações do gerenciador de boot. No Fedora, verifique a disponibilidade nos repositórios habilitados antes de instalar.
 
@@ -439,7 +432,7 @@ dnf search grub-customizer
 sudo dnf install grub-customizer -y
 ```
 
-## 2.16 🧰 JetBrains Toolbox
+## 2.15 🧰 JetBrains Toolbox
 
 ```bash
 cd ~/Downloads
@@ -455,7 +448,7 @@ cd jetbrains-toolbox-*/
 ./jetbrains-toolbox
 ```
 
-## 2.17 📱 Android Studio
+## 2.16 📱 Android Studio
 
 ### Opção Flatpak:
 
@@ -469,7 +462,7 @@ Na primeira inicialização, instale:
 - Android Emulator
 - Android SDK Platform Tools
 
-## 2.18 🔧 Git + SSH + GitHub
+## 2.17 🔧 Git + SSH + GitHub
 
 ### Criar/configurar uma chave SSH
 

@@ -231,7 +231,7 @@ git config --global init.defaultBranch main
 
 ---
 
-## 5.3 📊 Fastfetch & Utilitários CLI
+## 5.3 📊 Fastfetch & Utilitários CLI do Sistema
 
 ```powershell
 # Instala Fastfetch (informações do sistema e hardware no terminal)
@@ -239,6 +239,14 @@ winget install --id Fastfetch-cli.Fastfetch -e
 
 # Instala 7-Zip (compactador e descompactador de arquivos)
 winget install --id 7zip.7zip -e
+
+# Visualização de diretórios em árvore (utilitário nativo ou via Winget)
+# O Windows já possui o comando nativo: tree /F
+# Caso queira a versão GNU Tree colorida:
+winget install --id GnuWin32.Tree -e
+
+# Monitor de recursos em tempo real de terminal (gtop - requer Node.js/npm)
+npm install -g gtop
 ```
 
 ---
@@ -256,19 +264,20 @@ npm -v
 
 ---
 
-## 5.5 🤖 Gemini CLI e Gtop
+## 5.5 🚀 Antigravity CLI (agy)
 
-Com o Node.js e npm instalados:
+O **Antigravity CLI** (`agy`) é o assistente inteligente avançado de terminal e desenvolvimento.
 
 ```powershell
-# Instala o Google Gemini CLI globalmente
-npm install -g @google/gemini-cli
+# Instalação do Antigravity CLI para Windows
+# Executar no PowerShell:
+irm "https://antigravity.google/cli/install.ps1" | iex
 
-# Instala o monitor de recursos de sistema em terminal gtop
-npm install -g gtop
+# Ou caso utilize o WSL 2:
+# curl -fsSL https://antigravity.google/cli/install.sh | bash
 
-# Verifica a instalação do Gemini
-gemini --version
+# Validação
+agy --version
 ```
 
 ---

@@ -166,15 +166,12 @@ unzip \
 python
 ```
 
-## 2.2 🌳 Tree
+## 2.2 🖥️ Ferramentas do sistema
 
 ```bash
+# Estrutura de diretórios em formato de árvore
 sudo pacman -S tree --noconfirm
-```
 
-## 2.3 🖥️ Ferramentas do sistema
-
-```bash
 # Personalização do GNOME
 sudo pacman -S gnome-tweaks --noconfirm
 
@@ -184,7 +181,7 @@ sudo pacman -S gnome-browser-connector --noconfirm
 # Gerenciador de extensões do GNOME
 sudo pacman -S extension-manager --noconfirm
 
-# Informações do sistema
+# Informações do sistema e hardware
 sudo pacman -S fastfetch --noconfirm
 
 # Backup do sistema
@@ -199,11 +196,14 @@ sudo pacman -S cava --noconfirm
 # Monitoramento de processos
 sudo pacman -S htop --noconfirm
 
+# Monitor interativo de recursos via terminal (gtop - requer Node.js/npm)
+sudo npm install -g gtop 2>/dev/null || true
+
 # Gerenciador de partições
 sudo pacman -S gparted --noconfirm
 ```
 
-## 2.4 🟢 Node.js e npm
+## 2.3 🟢 Node.js e npm
 
 ```bash
 # Instala Node.js e npm dos repositórios oficiais do Arch
@@ -214,15 +214,11 @@ node -v
 npm -v
 ```
 
-## 2.5 🤖 Gemini CLI, Gtop e Antigravity
+## 2.4 🚀 Antigravity CLI (agy)
+
+O **Antigravity CLI** (`agy`) é o assistente inteligente avançado de terminal e desenvolvimento.
 
 ```bash
-# Instala o monitor gtop globalmente via npm
-sudo npm install -g gtop
-
-# Instala o Gemini CLI globalmente
-sudo npm install -g @google/gemini-cli
-
 # Instala o Antigravity CLI
 curl -fsSL https://antigravity.google/cli/install.sh | bash
 
@@ -232,14 +228,11 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 # Recarrega o ZSH
 source ~/.zshrc
 
-# Verifica as instalações
-node -v
-npm -v
-gemini --version
+# Verifica a instalação
 agy --version
 ```
 
-## 2.6 🧑‍💻 Visual Studio Code
+## 2.5 🧑‍💻 Visual Studio Code
 
 ### Opção 1: Code - OSS (Repositório Oficial Arch)
 
@@ -257,7 +250,7 @@ yay -S visual-studio-code-bin --noconfirm
 code --version
 ```
 
-## 2.7 🔀 Meld e Sublime Merge
+## 2.6 🔀 Meld e Sublime Merge
 
 ```bash
 # Meld (Oficial)
@@ -267,7 +260,7 @@ sudo pacman -S meld --noconfirm
 yay -S sublime-merge --noconfirm
 ```
 
-## 2.8 🐳 Docker e Docker Compose
+## 2.7 🐳 Docker e Docker Compose
 
 ```bash
 # Instala Docker e Docker Compose dos repositórios oficiais
@@ -289,7 +282,7 @@ sudo usermod -aG docker $USER
 
 > Após adicionar seu usuário ao grupo `docker`, encerre a sessão do usuário ou rode `newgrp docker` para aplicar o grupo.
 
-## 2.9 💬 Discord
+## 2.8 💬 Discord
 
 No Arch Linux, o Discord está disponível diretamente no repositório oficial.
 
@@ -301,7 +294,7 @@ sudo pacman -S discord --noconfirm
 discord --version
 ```
 
-## 2.10 ☕ Java / OpenJDK
+## 2.9 ☕ Java / OpenJDK
 
 No Arch Linux, o Java é gerenciado facilmente via `archlinux-java`.
 
@@ -320,7 +313,7 @@ java --version
 javac --version
 ```
 
-## 2.11 🐍 Anaconda
+## 2.10 🐍 Anaconda
 
 ```bash
 # Atualiza o sistema
@@ -350,7 +343,7 @@ conda --version
 conda info --base
 ```
 
-## 2.12 📦 Flatpak
+## 2.11 📦 Flatpak
 
 ```bash
 # Instala o Flatpak
@@ -383,7 +376,7 @@ flatpak install flathub com.jetbrains.PhpStorm -y
 flatpak install flathub com.google.AndroidStudio -y
 ```
 
-## 2.13 🧰 JetBrains Toolbox
+## 2.12 🧰 JetBrains Toolbox
 
 No Arch Linux, você pode instalar o JetBrains Toolbox diretamente via AUR ou pelo site oficial.
 
@@ -415,7 +408,7 @@ Pelo Toolbox, você pode instalar e gerenciar com facilidade:
 - CLion
 - PhpStorm
 
-## 2.14 📱 Android Studio
+## 2.13 📱 Android Studio
 
 ### Opção 1: Via AUR (Recomendado no Arch)
 
@@ -451,7 +444,7 @@ Na primeira inicialização, certifique-se de marcar e instalar:
 - Android Emulator
 - Android SDK Platform Tools
 
-## 2.15 🎥 OBS Studio
+## 2.14 🎥 OBS Studio
 
 ```bash
 # Instala o OBS Studio dos repositórios oficiais do Arch
@@ -461,7 +454,7 @@ sudo pacman -S obs-studio --noconfirm
 obs --version
 ```
 
-## 2.16 🧲 qBittorrent
+## 2.15 🧲 qBittorrent
 
 ### Opção 1: Via repositórios oficiais (Pacman)
 
@@ -483,7 +476,7 @@ flatpak install flathub org.qbittorrent.qBittorrent -y
 flatpak run org.qbittorrent.qBittorrent
 ```
 
-## 2.17 🛠️ GRUB Customizer
+## 2.16 🛠️ GRUB Customizer
 
 > ⚠️ O GRUB Customizer altera a configuração do bootloader. No Arch Linux, recomenda-se cautela pois atualizações do GRUB podem conflitar com customizações manuais.
 
@@ -495,7 +488,7 @@ yay -S grub-customizer --noconfirm
 grub-customizer
 ```
 
-## 2.18 🔧 Git + SSH + GitHub
+## 2.17 🔧 Git + SSH + GitHub
 
 ### Criar/configurar uma chave SSH
 
