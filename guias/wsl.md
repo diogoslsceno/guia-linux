@@ -3,12 +3,35 @@
 > Guia pessoal de comandos, boas práticas e configurações para o **WSL 2 (Windows Subsystem for Linux)**.
 >
 > ⚠️ **Atenção:** O WSL 2 roda um kernel Linux real virtualizado via Hyper-V leve no Windows 10/11. Ele possui particularidades de rede, compartilhamento de sistema de arquivos (`/mnt/c`) e inicialização via `systemd`.
+> Para configurar e otimizar seu ambiente nativo do Windows 10/11 (PowerShell, Winget, debloat e ferramentas), consulte também o [Guia Windows 10/11 (`guias/windows.md`)](./windows.md).
 
 ---
 
-# 1. ⚙️ Configurações Essenciais do WSL 2
+# 1. ⚙️ Comandos do WSL no Windows & Configurações
 
-## 1.1 🚀 Arquivo `.wslconfig` (Host Windows)
+## 1.1 💻 Comandos Úteis do WSL (Executar no PowerShell do Windows)
+
+```powershell
+# Instala o WSL 2 com a distribuição padrão (Ubuntu)
+wsl --install
+
+# Atualiza o kernel do WSL para a versão mais recente
+wsl --update
+
+# Exibe o status geral e a versão padrão do WSL
+wsl --status
+
+# Exibe as versões detalhadas instaladas do kernel e WSL
+wsl --version
+
+# Lista todas as distribuições instaladas e seus respectivos status/versão
+wsl --list --verbose
+
+# Encerra todas as instâncias em execução do WSL (necessário após editar configs)
+wsl --shutdown
+```
+
+## 1.2 🚀 Arquivo `.wslconfig` (Host Windows)
 
 No Windows, crie ou edite o arquivo `%USERPROFILE%\.wslconfig` para limitar os recursos do Hyper-V e evitar consumo excessivo de memória:
 
@@ -24,7 +47,7 @@ autoMemoryReclaim=gradual  # Libera memória RAM de volta para o Windows gradual
 sparseVhd=true             # Reduz automaticamente o tamanho do disco virtual (.vhdx)
 ```
 
-## 1.2 🐧 Arquivo `/etc/wsl.conf` (Dentro do Linux)
+## 1.3 🐧 Arquivo `/etc/wsl.conf` (Dentro do Linux)
 
 No terminal do seu Linux no WSL, configure `/etc/wsl.conf`:
 
@@ -96,8 +119,8 @@ Com o `systemd=true` ativado em `/etc/wsl.conf`, instale o Docker diretamente no
 ## 3.4 🤖 Gemini CLI e Antigravity CLI
 
 ```bash
-# Node.js
-curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+# Node.js LTS via NodeSource
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt install -y nodejs
 
 # Gemini CLI e Antigravity

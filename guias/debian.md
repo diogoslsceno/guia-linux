@@ -191,16 +191,18 @@ node -v
 npm -v
 ```
 
-### Opção 2: Via NodeSource (Versão LTS / v22)
+### Opção 2: Via NodeSource (Versão LTS Recomendada / v22)
 
 ```bash
-# Configura o repositório do Node.js 22 LTS
-curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+# Configura o repositório oficial do NodeSource para a versão LTS mais recente
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+# Nota: Caso prefira travar especificamente na versão 22:
+# curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 
-# Instala o Node.js 22 e npm
+# Instala o Node.js LTS e npm
 sudo apt install -y nodejs
 
-# Verifica a versão
+# Verifica as versões instaladas
 node -v
 npm -v
 ```
@@ -234,7 +236,27 @@ agy --version
 
 ## 2.6 🧑‍💻 Visual Studio Code
 
-### Opção recomendada: pacote `.deb` oficial
+### Opção 1: Via Repositório Oficial Microsoft APT (Atualizações Automáticas)
+
+```bash
+# Instala dependências para adicionar repositório seguro
+sudo apt install -y wget gpg apt-transport-https
+
+# Adiciona a chave GPG oficial da Microsoft no formato de chaveiro moderno
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/keyrings/packages.microsoft.gpg > /dev/null
+
+# Adiciona o repositório do VS Code
+echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+
+# Atualiza a lista de pacotes e instala o VS Code
+sudo apt update
+sudo apt install -y code
+
+# Verifica a instalação
+code --version
+```
+
+### Opção 2: Pacote `.deb` avulso oficial
 
 ```bash
 cd ~/Downloads
@@ -250,7 +272,7 @@ sudo apt install ./code.deb -y
 code --version
 ```
 
-### Alternativa: Snap
+### Opção 3: Snap
 
 ```bash
 sudo snap install --classic code

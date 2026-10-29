@@ -20,6 +20,7 @@ guia-linux/
 │   ├── fedora.md            # Fedora, RHEL, CentOS (DNF & RPM)
 │   ├── opensuse.md          # openSUSE Tumbleweed e Leap (Zypper)
 │   ├── termux.md            # Android Termux (Bionic libc, PKG, code-server, SSH)
+│   ├── windows.md           # Windows 10/11 (Debloat, Winget, PowerShell 7, Starship, Dev Tools)
 │   └── wsl.md               # Windows Subsystem for Linux 2 (WSL 2 & WSLg)
 ├── scripts/
 │   ├── install.sh           # Orquestrador universal com autodetecção da distribuição
@@ -119,6 +120,18 @@ Ou execute diretamente o script dedicado para a sua distribuição:
   * **Integração de Sistema:** Ativação de `systemd`, resolução de nomes e isolamento de PATH via `/etc/wsl.conf`.
   * **Desempenho de Armazenamento:** Boas práticas de velocidade (Ext4 vs emulação 9P no NTFS `/mnt/c`).
   * **Ferramentas e IDEs:** Extensão VS Code Remote WSL, Docker Desktop vs Docker Engine nativo, WSLg (interface gráfica) e qBittorrent.
+
+---
+
+### 7. 🪟 [Windows 10 & 11 (`guias/windows.md`)](./guias/windows.md)
+* **Público-Alvo:** Desenvolvedores e entusiastas utilizando ambiente nativo **Windows 10 e 11**.
+* **Resumo do Conteúdo:**
+  * **Debloat & Otimização:** Remoção de telemetria, bloatwares e propagandas via script oficial Win11Debloat (`& ([scriptblock]::Create((irm "https://debloat.raphi.re/")))`) e WinUtil.
+  * **Gerenciador de Pacotes (Winget):** Comandos de busca, atualização em lote e instalação silenciosa de programas.
+  * **Terminal Moderno & Shell:** Windows Terminal, PowerShell 7 (PS Core) e tabela comparativa de comandos Linux vs PowerShell.
+  * **Estética & Prompt:** Starship Prompt, JetBrains Mono Nerd Font e autocompletar inteligente com PSReadLine no `$PROFILE`.
+  * **Ferramentas Nativas Compatíveis:** Git + SSH Agent, Node.js LTS, OpenJDK 21, Python 3, Docker Desktop, VS Code, Fastfetch, qBittorrent, Discord e Gemini CLI.
+  * **Tabela de Compatibilidade:** Mapeamento do que é exclusivo do Linux (GRUB, ZSH, etc.) e seus equivalentes no Windows.
 
 ---
 

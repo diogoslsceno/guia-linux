@@ -93,7 +93,7 @@ pacman -Si nome-do-pacote
 pacman -Qe
 
 # Remove pacotes órfãos (dependências não utilizadas por nenhum app)
-sudo pacman -Rns $(pacman -Qtdq)
+pacman -Qtdq | sudo pacman -Rns - 2>/dev/null || echo "Nenhum pacote órfão encontrado."
 
 # Limpa a cache de pacotes antigos do pacman
 sudo pacman -Sc
@@ -103,7 +103,7 @@ sudo pacman -Sc
 
 ```bash
 # Instala dependências de compilação
-sudo pacman -S --needed base-devel git -y
+sudo pacman -S --needed --noconfirm base-devel git
 
 # Clona o repositório do yay
 cd ~/Downloads
@@ -1013,7 +1013,7 @@ sudo pacman -Rns linux-lts # (exemplo, se aplicável)
 ### 27. Limpar pacotes órfãos desnecessários
 
 ```bash
-sudo pacman -Rns $(pacman -Qtdq) 2>/dev/null || true
+pacman -Qtdq | sudo pacman -Rns - 2>/dev/null || true
 ```
 
 ### 28. Confirmar imagens no `/boot`

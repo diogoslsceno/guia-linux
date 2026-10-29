@@ -172,14 +172,18 @@ code --version
 ## 2.5 🐳 Docker Engine e Docker Compose
 
 ```bash
-# Instala Docker e utilitários
-sudo zypper install -y docker docker-compose
+# Instala Docker e Compose v2
+sudo zypper install -y docker docker-compose docker-compose-switch
 
 # Habilita e inicia o daemon do Docker
 sudo systemctl enable --now docker
 
 # Adiciona o usuário ao grupo docker
 sudo usermod -aG docker $USER
+
+# Verifica versões
+docker --version
+docker compose version
 ```
 
 > Reinicie a sessão ou execute `newgrp docker` para validar as permissões.
@@ -252,8 +256,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ## 3.2 Zinit & Starship
 
 ```bash
-# Zinit
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+# Zinit (Gerenciador de Plugins de Alta Performance)
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+mkdir -p "$(dirname "$ZINIT_HOME")"
+git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
 # Starship Prompt
 curl -sS https://starship.rs/install.sh | sh -s -- -y

@@ -266,10 +266,9 @@ docker-selinux \
 docker-engine-selinux \
 docker-engine -y
 
-# Instala plugins de gerenciamento do DNF
-sudo dnf install dnf-plugins-core -y
-
 # Adiciona o repositório oficial do Docker para Fedora
+# Se estiver no Fedora 41+ (DNF5 padrão):
+sudo dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo 2>/dev/null || \
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 
 # Instala Docker Engine, CLI, containerd, Buildx e Compose
