@@ -4,6 +4,14 @@
 # ==============================================================================
 set -euo pipefail
 
+# 0. Verificação de Segurança: Impede execução direta com sudo
+if [ "$(id -u)" -eq 0 ] && [ -n "${SUDO_USER:-}" ]; then
+    echo "❌ Erro de segurança: Não execute este script com 'sudo'."
+    echo "Execute diretamente como seu usuário regular: $0"
+    echo "O script solicitará permissões administrativas (sudo) pontualmente quando necessário."
+    exit 1
+fi
+
 echo "==> [Debian/Ubuntu] Iniciando configuração de ambiente..."
 
 # 1. Atualização e pacotes essenciais
@@ -12,11 +20,16 @@ sudo apt update && sudo apt install -y \
     curl wget git zsh ca-certificates gnupg software-properties-common \
     apt-transport-https tree fastfetch htop gparted unzip build-essential
 
-# 2. qBittorrent via PPA oficial (ou fallback de repositório)
+# 2. qBittorrent via PPA oficial (Ubuntu/derivados) ou repositório nativo (Debian)
 echo "==> Instalando qBittorrent..."
-if command -v add-apt-repository &> /dev/null; then
-    sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable -y || true
-    sudo apt update
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    if [[ "${ID:-}" =~ ^(ubuntu|linuxmint|pop|zorin)$ ]]; then
+        if command -v add-apt-repository &> /dev/null; then
+            sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable -y || true
+            sudo apt update
+        fi
+    fi
 fi
 sudo apt install -y qbittorrent
 
@@ -52,13 +65,15 @@ if [ ! -f "$FONT_DIR/JetBrainsMonoNerdFont-Regular.ttf" ]; then
     fc-cache -f "$FONT_DIR"
 fi
 
-# 7. Copiar dotfiles
+# 7. Copiar dotfiles com permissões seguras
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../dotfiles" && pwd)"
 if [ -d "$DOTFILES_DIR" ]; then
     echo "==> Sincronizando dotfiles..."
     mkdir -p "$HOME/.config"
     cp "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
     cp "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml"
+    chmod 600 "$HOME/.zshrc"
+    chmod 644 "$HOME/.config/starship.toml"
 fi
 
 # 8. Define ZSH como shell padrão

@@ -1,13 +1,57 @@
-# System files
+# ==============================================================================
+# 🛡️ .gitignore - Regras de Segurança, Integridade e Exclusões de Ambiente
+# ==============================================================================
+
+# 1. 🔒 Segurança, Chaves Privadas e Certificados
+*.pem
+*.key
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.pkcs12
+*.crt
+*.cer
+id_rsa
+id_rsa*
+id_ed25519
+id_ed25519*
+id_ecdsa*
+id_dsa*
+known_hosts
+authorized_keys
+
+# 2. 🔑 Variáveis de Ambiente, Tokens e Credenciais
+.env
+.env.*
+!.env.example
+*.env
+.netrc
+.npmrc
+.yarnrc
+
+# 3. 📜 Histórico de Shells, Sessões e Caches de Terminal
+.*_history
+.zsh_history
+.bash_history
+.zcompdump*
+.zsh_sessions/
+.cache/
+
+# 4. 💻 Arquivos Temporários de Sistema Operacional
 .DS_Store
 Thumbs.db
+desktop.ini
+ehthumbs.db
 *.swp
 *.swo
 *~
+*.bak
+*.orig
 *.log
 *.tmp
 
-# Editors and IDEs
+# 5. 🧑‍💻 Editores e IDEs
 .idea/
 .vscode/
 *.suo
@@ -15,19 +59,25 @@ Thumbs.db
 *.njsproj
 *.sln
 
-# Downloads & Binaries
+# 6. 📦 Downloads, Binários e Pacotes de Instalação
 Downloads/
 *.deb
 *.rpm
 *.pkg.tar.zst
 *.tar.gz
+*.tar.xz
 *.zip
+*.7z
 *.iso
 
-# Local environment & Node / Python artifacts
-.env
+# 7. 🐍 Python, Node.js e Caches de Linguagens
 node_modules/
 __pycache__/
 .venv/
 env/
 venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+target/
+.gradle/

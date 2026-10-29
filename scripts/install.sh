@@ -4,6 +4,14 @@
 # ==============================================================================
 set -euo pipefail
 
+# 0. Verificação de Segurança: Impede execução incorreta com sudo
+if [ "$(id -u)" -eq 0 ] && [ -n "${SUDO_USER:-}" ]; then
+    echo "❌ Erro de segurança: Não execute este script com 'sudo'."
+    echo "Execute diretamente como seu usuário regular: $0"
+    echo "O script solicitará privilégios administrativos (sudo) pontualmente quando necessário."
+    exit 1
+fi
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "=================================================================="

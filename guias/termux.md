@@ -418,8 +418,8 @@ deactivate
 ## 2.9 ☕ Java / OpenJDK & Outras Linguagens
 
 ```bash
-# Instala o OpenJDK no Termux
-pkg install openjdk-17 -y
+# Instala o OpenJDK 21 LTS no Termux (ou openjdk-17 caso prefira)
+pkg install openjdk-21 -y
 
 # Verifica as versões do Java
 java -version
@@ -547,7 +547,10 @@ ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ## 3.5 Instalar Zinit
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+# Instalação confiável e isolada do Zinit via Git
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+mkdir -p "$(dirname "$ZINIT_HOME")"
+git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 ```
 
 ## 3.6 Instalar Starship Prompt
@@ -606,17 +609,17 @@ No Termux, as fontes personalizadas e paletas de cores devem ser salvas no diret
 ```bash
 # Cria o diretório de configurações do Termux
 mkdir -p ~/.termux
-
-# Baixa a JetBrains Mono Nerd Font diretamente
-curl -fLo ~/.termux/font.ttf \
-https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
-
-# Como o download do release contém o zip completo, extraímos especificamente o TTF:
 cd ~/.termux
-pkg install unzip -y
-wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip -O jb.zip
-unzip -o jb.zip "JetBrainsMonoNerdFont-Regular.ttf"
-mv "JetBrainsMonoNerdFont-Regular.ttf" font.ttf
+
+# Instala ferramentas de download e descompactação
+pkg install wget unzip -y
+
+# Baixa a release mais recente da JetBrains Mono Nerd Font
+wget -q "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip" -O jb.zip
+
+# Extrai exclusivamente o arquivo regular da fonte
+unzip -oq jb.zip "JetBrainsMonoNerdFont-Regular.ttf"
+mv -f "JetBrainsMonoNerdFont-Regular.ttf" font.ttf
 rm -f jb.zip
 
 # Aplica as novas fontes e configurações na tela instantaneamente
@@ -853,17 +856,26 @@ ssh SEU_USUARIO@IP_DO_CELULAR -p 8022
 pkill sshd
 ```
 
-### (Opcional) Acesso sem senha usando chave SSH pública do PC
+### (Opcional) Acesso seguro sem senha usando chave SSH pública do PC
 
-No seu computador, copie a chave pública para o Termux:
+No seu computador, copie sua chave pública para o Termux:
 
 ```bash
 ssh-copy-id -p 8022 SEU_USUARIO@IP_DO_CELULAR
 ```
 
-## 4.3 🔋 Gestão de Energia e Background (Wake-lock)
+> 🔒 **Segurança das Chaves no Termux:**
+> Certifique-se de que as permissões do diretório e do arquivo de chaves autorizadas estejam restritas:
+> ```bash
+> chmod 700 ~/.ssh
+> chmod 600 ~/.ssh/authorized_keys
+> ```
 
-Por padrão, o Android suspende processos de aplicativos em segundo plano para economizar bateria quando a tela é desligada. Para manter serviços como `sshd`, downloads longos ou servidores web ativos:
+## 4.3 🔋 Gestão de Energia e Prevenção de Encerramento (Wake-lock & Phantom Processes)
+
+Por padrão, o Android suspende processos de aplicativos em segundo plano para economizar bateria quando a tela é desligada.
+
+### 1. Prevenir suspensão via terminal (Wake-lock)
 
 ```bash
 # Impede o Android de suspender o Termux enquanto a tela estiver desligada
@@ -873,7 +885,21 @@ termux-wake-lock
 termux-wake-unlock
 ```
 
-> 💡 **Recomendação:** Acesse as **Configurações do Android → Aplicativos → Termux → Bateria** e marque como **"Sem Restrições"** (Unrestricted).
+> 💡 **Recomendação de Bateria:** Acesse as **Configurações do Android → Aplicativos → Termux → Bateria** e marque como **"Sem Restrições"** (Unrestricted).
+
+### 2. Desativar o "Phantom Process Killer" (Android 12, 13, 14+)
+
+A partir do Android 12, o sistema operacional introduziu um monitor que encerra automaticamente qualquer aplicativo que gere mais de 32 processos filhos (provocando o erro `[Process completed (signal 9) - press Enter]` ao rodar `node`, `code-server`, `proot` ou compilações).
+
+Para desativar essa limitação via computador com **ADB (Android Debug Bridge)** conectado via USB com depuração ativada:
+
+```bash
+# Executar no terminal do PC (Linux, macOS ou Windows):
+adb shell "/system/bin/device_config set_sync_disabled_for_tests persistent"
+adb shell "/system/bin/device_config put activity_manager max_phantom_processes 2147483647"
+```
+
+*(No Android 14+, essa opção também pode ser desativada diretamente em **Configurações → Opções do Desenvolvedor → Desativar monitoramento de processos filhos** em algumas fabricantes).*
 
 ## 4.4 🚀 Inicialização automática de serviços com Termux:Boot
 

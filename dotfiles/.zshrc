@@ -1,22 +1,36 @@
 # ==============================================================================
-# 🐚 .zshrc - Configuração Universal de Alta Performance (Guia Linux)
+# 🐚 .zshrc - Configuração Universal de Alta Performance & Segurança
 # ==============================================================================
 
 # Caminho da instalação do Oh My Zsh
 export ZSH="$HOME/.oh-my-zsh"
 
-# Tema desativado em favor do Starship Prompt
+# Tema nativo desativado em favor do Starship Prompt
 ZSH_THEME=""
 
 # Configurações do Oh My Zsh
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+ZSH_DISABLE_COMPFIX="true" # Previne bloqueios por permissões inseguras em multiusuários
 
 # Plugins nativos leves do Oh My Zsh
 plugins=(git sudo)
 
 # Carrega Oh My Zsh se instalado
 [[ -f "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH/oh-my-zsh.sh"
+
+# ------------------------------------------------------------------------------
+# 📜 Histórico Seguro e Otimizado
+# ------------------------------------------------------------------------------
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_ALL_DUPS      # Remove duplicatas contíguas
+setopt HIST_FIND_NO_DUPS         # Não mostra itens repetidos na busca reversa
+setopt HIST_IGNORE_SPACE         # 🔒 Segurança: Comandos iniciados com espaço não são gravados no histórico (ex: " export TOKEN=...")
+setopt HIST_SAVE_NO_DUPS         # Não salva duplicatas no arquivo
+setopt SHARE_HISTORY             # Compartilha histórico entre sessões abertas
+setopt INC_APPEND_HISTORY        # Grava imediatamente no arquivo de histórico
 
 # ------------------------------------------------------------------------------
 # 📦 Plugins via Zinit (Alta Velocidade)
@@ -41,16 +55,20 @@ if command -v starship &> /dev/null; then
 fi
 
 # ------------------------------------------------------------------------------
-# 🌐 Variáveis de Ambiente & PATH
+# 🌐 Variáveis de Ambiente & PATH Seguro
 # ------------------------------------------------------------------------------
 export EDITOR="nano"
 
-# Inclui binários locais do usuário, Cargo (Rust), Go e Termux no PATH
-export PATH="$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin:/usr/local/go/bin:$PATH"
+# Inclui binários locais do usuário, Cargo (Rust), Go e Termux no PATH (apenas se existirem)
+typeset -U path # Garante que entradas duplicadas não sejam inseridas no PATH
+for dir in "$HOME/.local/bin" "$HOME/bin" "$HOME/.cargo/bin" "/usr/local/go/bin"; do
+    [[ -d "$dir" ]] && path=("$dir" $path)
+done
 
-if [[ -n "$PREFIX" ]]; then
-    export PATH="$PREFIX/bin:$PATH"
+if [[ -n "$PREFIX" && -d "$PREFIX/bin" ]]; then
+    path=("$PREFIX/bin" $path)
 fi
+export PATH
 
 # ------------------------------------------------------------------------------
 # ☕ SDKMAN (Java, Kotlin, Gradle, Maven)
@@ -59,8 +77,14 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # ------------------------------------------------------------------------------
-# ⚡ Aliases Úteis
+# ⚡ Aliases Úteis & Proteções contra Acidentes
 # ------------------------------------------------------------------------------
+# Proteções contra sobrescrita e remoção destrutiva
+alias cp="cp -i"                 # Pede confirmação antes de sobrescrever arquivos
+alias mv="mv -i"                 # Pede confirmação antes de mover sobre arquivo existente
+alias rm="rm -I"                 # Pede confirmação ao remover mais de 3 arquivos ou recursivo
+
+# Navegação e listagem
 alias l="ls -la"
 alias ll="ls -lh"
 alias la="ls -A"

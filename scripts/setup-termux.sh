@@ -38,7 +38,7 @@ unzip -oq "$TMP_ZIP" "JetBrainsMonoNerdFont-Regular.ttf"
 mv -f "JetBrainsMonoNerdFont-Regular.ttf" font.ttf
 rm -f "$TMP_ZIP"
 
-# 5. Copiar dotfiles e propriedades do Termux
+# 5. Copiar dotfiles e propriedades do Termux com permissões seguras
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../dotfiles" && pwd)"
 if [ -d "$DOTFILES_DIR" ]; then
     echo "==> Sincronizando dotfiles e teclas virtuais..."
@@ -46,6 +46,9 @@ if [ -d "$DOTFILES_DIR" ]; then
     cp "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
     cp "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml"
     cp "$DOTFILES_DIR/termux.properties" "$HOME/.termux/termux.properties"
+    chmod 600 "$HOME/.zshrc"
+    chmod 644 "$HOME/.config/starship.toml"
+    chmod 644 "$HOME/.termux/termux.properties"
 fi
 
 # 6. Recarregar propriedades do Termux

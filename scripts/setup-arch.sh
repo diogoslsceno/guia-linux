@@ -4,6 +4,14 @@
 # ==============================================================================
 set -euo pipefail
 
+# 0. Verificação de Segurança: Impede execução direta com sudo
+if [ "$(id -u)" -eq 0 ] && [ -n "${SUDO_USER:-}" ]; then
+    echo "❌ Erro de segurança: Não execute este script com 'sudo'."
+    echo "Execute diretamente como seu usuário regular: $0"
+    echo "O script solicitará permissões administrativas (sudo) pontualmente quando necessário."
+    exit 1
+fi
+
 echo "==> [Arch Linux] Iniciando configuração de ambiente..."
 
 # 1. Atualização e pacotes essenciais
@@ -31,13 +39,15 @@ fi
 echo "==> Instalando Starship Prompt e Fonte..."
 sudo pacman -S --needed --noconfirm starship ttf-jetbrains-mono-nerd
 
-# 5. Copiar dotfiles
+# 5. Copiar dotfiles com permissões seguras
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../dotfiles" && pwd)"
 if [ -d "$DOTFILES_DIR" ]; then
     echo "==> Sincronizando dotfiles..."
     mkdir -p "$HOME/.config"
     cp "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
     cp "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml"
+    chmod 600 "$HOME/.zshrc"
+    chmod 644 "$HOME/.config/starship.toml"
 fi
 
 # 6. Define ZSH como shell padrão
