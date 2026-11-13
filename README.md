@@ -29,6 +29,7 @@ guia-linux/
 │   ├── setup-fedora.sh      # Script automatizado para Fedora
 │   └── setup-termux.sh      # Script automatizado para Android Termux
 ├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
