@@ -538,14 +538,21 @@ git config --global --list
 
 ## 3.1 Instalar ZSH
 
+Instala ZSH e `zsh-completions`:
+
 ```bash
-# Instala ZSH e zsh-completions
 sudo pacman -S zsh zsh-completions --noconfirm
+```
 
-# Verifica a versão instalada
+Verifica a versão instalada:
+
+```bash
 zsh --version
+```
 
-# Define o ZSH como shell padrão do usuário
+Define o ZSH como shell padrão do usuário:
+
+```bash
 chsh -s $(which zsh)
 ```
 
@@ -565,14 +572,16 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ## 3.4 Instalar plugins
 
-```bash
-# Syntax Highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
-${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+Syntax Highlighting:
 
-# Autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions \
-${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```bash
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+Autosuggestions:
+
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
 ## 3.5 Instalar Zinit
@@ -583,11 +592,15 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/
 
 ## 3.6 Instalar Starship Prompt
 
-```bash
-# Instala o Starship
-curl -sS https://starship.rs/install.sh | sh
+Instala o Starship:
 
-# Verifica a versão
+```bash
+curl -sS https://starship.rs/install.sh | sh
+```
+
+Verifica a versão:
+
+```bash
 starship --version
 ```
 
@@ -641,11 +654,33 @@ sudo pacman -S ttf-jetbrains-mono-nerd --noconfirm
 
 ### Opção manual:
 
+Cria a pasta de fontes do usuário:
+
 ```bash
 mkdir -p ~/.local/share/fonts
+```
+
+Entra na pasta:
+
+```bash
 cd ~/.local/share/fonts
+```
+
+Baixa a JetBrains Mono Nerd Font:
+
+```bash
 wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+```
+
+Extrai:
+
+```bash
 unzip JetBrainsMono.zip
+```
+
+Atualiza o cache de fontes:
+
+```bash
 fc-cache -fv
 ```
 
@@ -653,10 +688,15 @@ Após instalar, configure o seu emulador de terminal para usar a fonte `JetBrain
 
 ## 3.9 ⭐ Configurar o Starship
 
-Crie o arquivo de configuração do Starship:
+Cria a pasta de configuração:
 
 ```bash
 mkdir -p ~/.config
+```
+
+Cria e edita o arquivo de configuração do Starship:
+
+```bash
 nano ~/.config/starship.toml
 ```
 

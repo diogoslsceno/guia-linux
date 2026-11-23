@@ -240,36 +240,79 @@ cat ~/.ssh/id_ed25519.pub
 
 ## 3.1 Instalar ZSH & Oh My Zsh
 
+Instala ZSH:
+
 ```bash
-# Instala ZSH
 sudo zypper install -y zsh
+```
 
-# Define como shell padrão
+Define como shell padrão:
+
+```bash
 chsh -s $(which zsh)
+```
 
-# Instala Oh My Zsh
+Instala Oh My Zsh:
+
+```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 ```
 
 ## 3.2 Zinit & Starship
 
-```bash
-# Zinit (Gerenciador de Plugins de Alta Performance)
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-mkdir -p "$(dirname "$ZINIT_HOME")"
-git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+Define a variável de diretório do Zinit:
 
-# Starship Prompt
+```bash
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+```
+
+Cria o diretório pai:
+
+```bash
+mkdir -p "$(dirname "$ZINIT_HOME")"
+```
+
+Clona o repositório oficial do Zinit:
+
+```bash
+git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+```
+
+Instala o Starship Prompt:
+
+```bash
 curl -sS https://starship.rs/install.sh | sh -s -- -y
 ```
 
 ## 3.3 Nerd Fonts (JetBrains Mono)
 
+Cria a pasta de fontes do usuário:
+
 ```bash
 mkdir -p ~/.local/share/fonts
+```
+
+Entra na pasta:
+
+```bash
 cd ~/.local/share/fonts
+```
+
+Baixa a JetBrains Mono Nerd Font:
+
+```bash
 wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+```
+
+Extrai:
+
+```bash
 unzip -o JetBrainsMono.zip
+```
+
+Atualiza o cache de fontes:
+
+```bash
 fc-cache -fv
 ```
 

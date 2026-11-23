@@ -520,14 +520,21 @@ git remote -v
 
 ## 3.1 Instalar ZSH
 
+Instala o ZSH:
+
 ```bash
-# Instala o ZSH
 sudo dnf install zsh -y
+```
 
-# Verifica a versão
+Verifica a versão:
+
+```bash
 zsh --version
+```
 
-# Define o ZSH como shell padrão
+Define o ZSH como shell padrão:
+
+```bash
 chsh -s $(which zsh)
 ```
 
@@ -547,14 +554,16 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ## 3.4 Instalar plugins
 
-```bash
-# Syntax Highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
-${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+Syntax Highlighting:
 
-# Autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions \
-${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```bash
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+Autosuggestions:
+
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
 ## 3.5 Instalar Zinit
@@ -565,8 +574,15 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/
 
 ## 3.6 Instalar Starship Prompt
 
+Instala o Starship Prompt:
+
 ```bash
 curl -sS https://starship.rs/install.sh | sh
+```
+
+Verifica a instalação:
+
+```bash
 starship --version
 ```
 
@@ -610,11 +626,33 @@ source ~/.zshrc
 
 ## 3.8 🔤 Nerd Font (JetBrains Mono)
 
+Cria a pasta de fontes do usuário:
+
 ```bash
 mkdir -p ~/.local/share/fonts
+```
+
+Entra na pasta:
+
+```bash
 cd ~/.local/share/fonts
+```
+
+Baixa a JetBrains Mono Nerd Font:
+
+```bash
 wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+```
+
+Extrai:
+
+```bash
 unzip JetBrainsMono.zip
+```
+
+Atualiza o cache de fontes:
+
+```bash
 fc-cache -fv
 ```
 
@@ -622,10 +660,15 @@ Configure o emulador de terminal com a fonte `JetBrainsMono Nerd Font`.
 
 ## 3.9 ⭐ Configurar o Starship
 
-Crie e edite o arquivo `~/.config/starship.toml`:
+Cria a pasta de configuração:
 
 ```bash
 mkdir -p ~/.config
+```
+
+Cria e edita o arquivo `~/.config/starship.toml`:
+
+```bash
 nano ~/.config/starship.toml
 ```
 

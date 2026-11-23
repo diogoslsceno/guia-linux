@@ -492,57 +492,95 @@ termux-wifi-connectioninfo
 
 ## 3.1 Instalar ZSH
 
+Instala o interpretador ZSH:
+
 ```bash
-# Instala o interpretador ZSH
 pkg install zsh -y
+```
 
-# Verifica a versão instalada
+Verifica a versão instalada:
+
+```bash
 zsh --version
+```
 
-# Define o ZSH como shell padrão do Termux
+Define o ZSH como shell padrão do Termux:
+
+```bash
 chsh -s zsh
 ```
 
 ## 3.2 Instalar Curl e Git
 
+Instala o Curl e o Git:
+
 ```bash
 pkg install curl git -y
+```
 
+Verifica a versão do Curl:
+
+```bash
 curl --version
+```
+
+Verifica a versão do Git:
+
+```bash
 git --version
 ```
 
 ## 3.3 Instalar Oh My Zsh
 
+Instala o Oh My Zsh sem intervenção interativa imediata:
+
 ```bash
-# Instala o Oh My Zsh sem intervenção interativa imediata
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+```
 
-# Abre o arquivo de configuração para edição
+Abre o arquivo de configuração para edição:
+
+```bash
 nano ~/.zshrc
+```
 
-# Recarrega as configurações
+Recarrega as configurações:
+
+```bash
 source ~/.zshrc
 ```
 
 ## 3.4 Instalar plugins do ZSH
 
-```bash
-# Destaque de sintaxe (zsh-syntax-highlighting)
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
-${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+Destaque de sintaxe (`zsh-syntax-highlighting`):
 
-# Sugestões automáticas baseadas no histórico (zsh-autosuggestions)
-git clone https://github.com/zsh-users/zsh-autosuggestions \
-${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```bash
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+Sugestões automáticas baseadas no histórico (`zsh-autosuggestions`):
+
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
 ## 3.5 Instalar Zinit
 
+Define a variável de diretório do Zinit:
+
 ```bash
-# Instalação confiável e isolada do Zinit via Git
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+```
+
+Cria o diretório pai:
+
+```bash
 mkdir -p "$(dirname "$ZINIT_HOME")"
+```
+
+Clona o repositório oficial do Zinit:
+
+```bash
 git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 ```
 
@@ -550,11 +588,15 @@ git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
 No Termux, o Starship pode ser instalado diretamente via pacote oficial do repositório:
 
-```bash
-# Instalação nativa via pkg
-pkg install starship -y
+Instalação nativa via `pkg`:
 
-# Verifica a instalação
+```bash
+pkg install starship -y
+```
+
+Verifica a instalação:
+
+```bash
 starship --version
 ```
 
@@ -599,32 +641,65 @@ source ~/.zshrc
 
 No Termux, as fontes personalizadas e paletas de cores devem ser salvas no diretório `~/.termux/`. O arquivo de fonte deve obrigatoriamente se chamar `font.ttf`.
 
+Cria o diretório de configurações do Termux:
+
 ```bash
-# Cria o diretório de configurações do Termux
 mkdir -p ~/.termux
+```
+
+Entra no diretório:
+
+```bash
 cd ~/.termux
+```
 
-# Instala ferramentas de download e descompactação
+Instala ferramentas de download e descompactação:
+
+```bash
 pkg install wget unzip -y
+```
 
-# Baixa a release mais recente da JetBrains Mono Nerd Font
+Baixa a release mais recente da JetBrains Mono Nerd Font:
+
+```bash
 wget -q "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip" -O jb.zip
+```
 
-# Extrai exclusivamente o arquivo regular da fonte
+Extrai exclusivamente o arquivo regular da fonte:
+
+```bash
 unzip -oq jb.zip "JetBrainsMonoNerdFont-Regular.ttf"
-mv -f "JetBrainsMonoNerdFont-Regular.ttf" font.ttf
-rm -f jb.zip
+```
 
-# Aplica as novas fontes e configurações na tela instantaneamente
+Renomeia o arquivo extraído para `font.ttf`:
+
+```bash
+mv -f "JetBrainsMonoNerdFont-Regular.ttf" font.ttf
+```
+
+Remove o arquivo compactado temporário:
+
+```bash
+rm -f jb.zip
+```
+
+Aplica as novas fontes e configurações na tela instantaneamente:
+
+```bash
 termux-reload-settings
 ```
 
 ## 3.9 ⭐ Configurar o Starship
 
-Crie a pasta de configuração e o arquivo:
+Cria a pasta de configuração:
 
 ```bash
 mkdir -p ~/.config
+```
+
+Cria e abre o arquivo de configuração:
+
+```bash
 nano ~/.config/starship.toml
 ```
 

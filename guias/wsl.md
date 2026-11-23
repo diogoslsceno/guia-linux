@@ -162,13 +162,21 @@ Acesse a Web UI em seu navegador Windows em `http://localhost:8080`.
 1. **Instale a fonte JetBrains Mono Nerd Font no Windows** para que os glifos apareçam corretamente no **Windows Terminal**.
 2. No Windows Terminal, acesse as **Configurações → Perfis → Sua Distro → Aparência → Tipo de Letra** e selecione `JetBrainsMono Nerd Font`.
 3. Configure ZSH e Starship normalmente no WSL:
+
+Instala o Oh My Zsh:
+
 ```bash
-# Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+```
 
-# Starship Prompt
+Instala o Starship Prompt:
+
+```bash
 curl -sS https://starship.rs/install.sh | sh -s -- -y
+```
 
-# Ativar Starship no ~/.zshrc
+Ativa o Starship no `~/.zshrc`:
+
+```bash
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 ```

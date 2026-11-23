@@ -742,14 +742,21 @@ git push
 
 ## 3.1 Instalar ZSH
 
+Instala o ZSH:
+
 ```bash
-# Instala o ZSH
 sudo apt install zsh -y
+```
 
-# Verifica a versão
+Verifica a versão:
+
+```bash
 zsh --version
+```
 
-# Define o ZSH como shell padrão
+Define o ZSH como shell padrão:
+
+```bash
 chsh -s $(which zsh)
 ```
 
@@ -757,36 +764,56 @@ chsh -s $(which zsh)
 
 ## 3.2 Instalar Curl e Git
 
+Instala o Curl e o Git:
+
 ```bash
 sudo apt install curl git -y
+```
 
+Verifica a versão do Curl:
+
+```bash
 curl --version
+```
+
+Verifica a versão do Git:
+
+```bash
 git --version
 ```
 
 ## 3.3 Instalar Oh My Zsh
 
+Instala o Oh My Zsh:
+
 ```bash
-# Instala o Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
 
-# Abre a configuração do ZSH
+Abre a configuração do ZSH:
+
+```bash
 nano ~/.zshrc
+```
 
-# Recarrega as configurações
+Recarrega as configurações:
+
+```bash
 source ~/.zshrc
 ```
 
 ## 3.4 Instalar plugins
 
-```bash
-# Syntax highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
-${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+Syntax highlighting:
 
-# Sugestões automáticas
-git clone https://github.com/zsh-users/zsh-autosuggestions \
-${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```bash
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+Sugestões automáticas:
+
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
 ## 3.5 Instalar Zinit
@@ -797,11 +824,15 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/
 
 ## 3.6 Instalar Starship
 
-```bash
-# Instala o Starship Prompt
-curl -sS https://starship.rs/install.sh | sh
+Instala o Starship Prompt:
 
-# Verifica a instalação
+```bash
+curl -sS https://starship.rs/install.sh | sh
+```
+
+Verifica a instalação:
+
+```bash
 starship --version
 ```
 
@@ -847,20 +878,33 @@ source ~/.zshrc
 
 ## 3.8 🔤 Nerd Font — opcional
 
+Cria a pasta de fontes do usuário:
+
 ```bash
-# Cria a pasta de fontes do usuário
 mkdir -p ~/.local/share/fonts
+```
 
-# Entra na pasta
+Entra na pasta:
+
+```bash
 cd ~/.local/share/fonts
+```
 
-# Baixa a JetBrains Mono Nerd Font
+Baixa a JetBrains Mono Nerd Font:
+
+```bash
 wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+```
 
-# Extrai
+Extrai:
+
+```bash
 unzip JetBrainsMono.zip
+```
 
-# Atualiza o cache de fontes
+Atualiza o cache de fontes:
+
+```bash
 fc-cache -fv
 ```
 
@@ -868,10 +912,15 @@ Nas configurações do terminal (ex: Gnome Terminal, Ptyxis, Tilix), selecione a
 
 ## 3.9 ⭐ Configurar o Starship
 
-Crie a pasta de configuração e o arquivo:
+Cria a pasta de configuração:
 
 ```bash
 mkdir -p ~/.config
+```
+
+Cria e abre o arquivo de configuração:
+
+```bash
 nano ~/.config/starship.toml
 ```
 
