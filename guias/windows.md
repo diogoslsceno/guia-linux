@@ -245,7 +245,7 @@ winget install --id 7zip.7zip -e
 # Caso queira a versão GNU Tree colorida:
 winget install --id GnuWin32.Tree -e
 
-# Monitor de recursos em tempo real de terminal (gtop - requer Node.js/npm)
+# Monitor de recursos em tempo real de terminal (gtop — execute após instalar o Node.js/npm na Seção 5.4)
 npm install -g gtop
 ```
 

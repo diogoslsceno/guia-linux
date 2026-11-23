@@ -172,7 +172,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 Instala o Starship Prompt:
 
 ```bash
-curl -sS https://starship.rs/install.sh | sh -s -- -y
+curl -fsSL https://starship.rs/install.sh | sh -s -- -y
 ```
 
 Ativa o Starship no `~/.zshrc`:

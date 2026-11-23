@@ -281,7 +281,7 @@ git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 Instala o Starship Prompt:
 
 ```bash
-curl -sS https://starship.rs/install.sh | sh -s -- -y
+curl -fsSL https://starship.rs/install.sh | sh -s -- -y
 ```
 
 ## 3.3 Nerd Fonts (JetBrains Mono)

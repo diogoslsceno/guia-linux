@@ -151,8 +151,8 @@ sudo apt install fastfetch -y
 # Monitoramento de processos do sistema
 sudo apt install htop -y
 
-# Monitor interativo de recursos via terminal (gtop - requer Node.js/npm)
-sudo npm install -g gtop 2>/dev/null || true
+# Monitor interativo de recursos via terminal (gtop — execute após instalar Node.js/npm na Seção 2.3)
+sudo npm install -g gtop
 
 # Gerenciador de partições e discos
 sudo apt install gparted -y
@@ -804,6 +804,8 @@ source ~/.zshrc
 
 ## 3.4 Instalar plugins
 
+> 💡 **Nota:** Esta etapa é **opcional** se você utilizar o **Zinit** (Seções 3.5 e 3.7). Evite ativar o mesmo plugin simultaneamente no Oh My Zsh e no Zinit.
+
 Syntax highlighting:
 
 ```bash
@@ -827,7 +829,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/
 Instala o Starship Prompt:
 
 ```bash
-curl -sS https://starship.rs/install.sh | sh
+curl -fsSL https://starship.rs/install.sh | sh
 ```
 
 Verifica a instalação:
@@ -849,14 +851,18 @@ Adicione ao final do arquivo:
 ```zsh
 ### Plugins via Zinit
 
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[[ -f "${ZINIT_HOME}/zinit.zsh" ]] && source "${ZINIT_HOME}/zinit.zsh"
+
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-history-substring-search
 zinit light hlissner/zsh-autopair
-zinit light Aloxaf/fzf-tab
-zinit light agkozak/zsh-z
-zinit light zdharma-continuum/history-search-multi-word
+# Opcionais (fzf-tab requer o pacote fzf instalado):
+# zinit light Aloxaf/fzf-tab
+# zinit light agkozak/zsh-z
+# zinit light zdharma-continuum/history-search-multi-word
 
 ### Starship Prompt
 
@@ -927,6 +933,8 @@ nano ~/.config/starship.toml
 ### Tema original
 
 ```toml
+command_timeout = 1000
+
 format = """
 [░▒▓](#a3aed2)\
 [  ](bg:#a3aed2 fg:#090c0c)\

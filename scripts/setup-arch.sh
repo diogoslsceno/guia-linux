@@ -47,11 +47,13 @@ fi
 echo "==> Instalando Starship Prompt e Fonte..."
 sudo pacman -S --needed --noconfirm starship ttf-jetbrains-mono-nerd
 
-# 6. Copiar dotfiles com permissões seguras
+# 6. Copiar dotfiles com backup e permissões seguras
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../dotfiles" && pwd)"
 if [ -d "$DOTFILES_DIR" ]; then
     echo "==> Sincronizando dotfiles..."
     mkdir -p "$HOME/.config"
+    [ -f "$HOME/.zshrc" ] && cp "$HOME/.zshrc" "$HOME/.zshrc.bak"
+    [ -f "$HOME/.config/starship.toml" ] && cp "$HOME/.config/starship.toml" "$HOME/.config/starship.toml.bak"
     cp "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
     cp "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml"
     chmod 600 "$HOME/.zshrc"
@@ -59,9 +61,10 @@ if [ -d "$DOTFILES_DIR" ]; then
 fi
 
 # 7. Define ZSH como shell padrão
-if [ "$SHELL" != "$(which zsh)" ]; then
+ZSH_BIN="$(command -v zsh || true)"
+if [ -n "$ZSH_BIN" ] && [ "${SHELL:-}" != "$ZSH_BIN" ]; then
     echo "==> Definindo ZSH como shell padrão..."
-    chsh -s "$(which zsh)" "$USER" || true
+    chsh -s "$ZSH_BIN" "${USER:-$(id -un)}" || true
 fi
 
 echo "==> [Arch Linux] Instalação concluída com sucesso! Reinicie a sessão para aplicar todas as mudanças."

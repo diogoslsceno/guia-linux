@@ -42,7 +42,7 @@ fi
 # 5. Starship Prompt
 echo "==> Instalando Starship Prompt..."
 if ! command -v starship &> /dev/null; then
-    curl -sS https://starship.rs/install.sh | sh -s -- -y
+    curl -fsSL https://starship.rs/install.sh | sh -s -- -y
 fi
 
 # 6. JetBrains Mono Nerd Font
@@ -57,11 +57,13 @@ if [ ! -f "$FONT_DIR/JetBrainsMonoNerdFont-Regular.ttf" ]; then
     fc-cache -f "$FONT_DIR"
 fi
 
-# 7. Copiar dotfiles com permissões seguras
+# 7. Copiar dotfiles com backup e permissões seguras
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../dotfiles" && pwd)"
 if [ -d "$DOTFILES_DIR" ]; then
     echo "==> Sincronizando dotfiles..."
     mkdir -p "$HOME/.config"
+    [ -f "$HOME/.zshrc" ] && cp "$HOME/.zshrc" "$HOME/.zshrc.bak"
+    [ -f "$HOME/.config/starship.toml" ] && cp "$HOME/.config/starship.toml" "$HOME/.config/starship.toml.bak"
     cp "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
     cp "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml"
     chmod 600 "$HOME/.zshrc"
@@ -69,9 +71,10 @@ if [ -d "$DOTFILES_DIR" ]; then
 fi
 
 # 8. Define ZSH como shell padrão
-if [ "$SHELL" != "$(which zsh)" ]; then
+ZSH_BIN="$(command -v zsh || true)"
+if [ -n "$ZSH_BIN" ] && [ "${SHELL:-}" != "$ZSH_BIN" ]; then
     echo "==> Definindo ZSH como shell padrão..."
-    sudo chsh -s "$(which zsh)" "$USER" || true
+    sudo chsh -s "$ZSH_BIN" "${USER:-$(id -un)}" || true
 fi
 
 echo "==> [Fedora] Instalação concluída com sucesso! Reinicie a sessão para aplicar todas as mudanças."

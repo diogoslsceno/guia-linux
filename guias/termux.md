@@ -222,8 +222,8 @@ pkg install fastfetch -y
 # Monitor interativo de processos
 pkg install htop -y
 
-# Monitor interativo de recursos via terminal (gtop - requer Node.js/npm)
-npm install -g gtop 2>/dev/null || true
+# Monitor interativo de recursos via terminal (gtop — execute após instalar Node.js/npm na Seção 2.3)
+npm install -g gtop
 
 # Multiplexador de terminal (essencial para dividir tela e manter sessões ativas)
 pkg install tmux -y
@@ -552,6 +552,8 @@ source ~/.zshrc
 
 ## 3.4 Instalar plugins do ZSH
 
+> 💡 **Nota:** Esta etapa é **opcional** se você utilizar o **Zinit** (Seções 3.5 e 3.7). Evite ativar o mesmo plugin simultaneamente no Oh My Zsh e no Zinit.
+
 Destaque de sintaxe (`zsh-syntax-highlighting`):
 
 ```bash
@@ -612,6 +614,9 @@ Adicione ao final do arquivo:
 
 ```zsh
 ### Plugins via Zinit
+
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[[ -f "${ZINIT_HOME}/zinit.zsh" ]] && source "${ZINIT_HOME}/zinit.zsh"
 
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
@@ -706,6 +711,8 @@ nano ~/.config/starship.toml
 ### Tema original
 
 ```toml
+command_timeout = 1000
+
 format = """
 [░▒▓](#a3aed2)\
 [  ](bg:#a3aed2 fg:#090c0c)\
