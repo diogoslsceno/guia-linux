@@ -6,21 +6,24 @@ set -euo pipefail
 
 echo "==> [Termux] Iniciando configuração de ambiente móvel..."
 
-# 1. Atualização e pacotes essenciais
-echo "==> Atualizando repositórios e instalando dependências base..."
-pkg update && pkg upgrade -y
+# 1. Atualização completa e limpeza do sistema
+echo "==> Atualizando repositórios e limpando pacotes obsoletos..."
+pkg update && pkg upgrade -y && apt autoremove -y && pkg clean
+
+# 2. Pacotes essenciais
+echo "==> Instalando dependências base..."
 pkg install -y \
     curl wget git zsh ca-certificates gnupg \
     tar unzip zip jq build-essential clang make \
     tree fastfetch htop tmux ncdu micro cmatrix termux-tools starship
 
-# 2. ZSH & Oh My Zsh
+# 3. ZSH & Oh My Zsh
 echo "==> Configurando ZSH e Oh My Zsh..."
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
-# 3. Zinit (Plugin Manager)
+# 4. Zinit (Plugin Manager)
 echo "==> Instalando Zinit..."
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if [ ! -d "$ZINIT_HOME" ]; then
@@ -28,7 +31,7 @@ if [ ! -d "$ZINIT_HOME" ]; then
     git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-# 4. Nerd Font para Termux
+# 5. Nerd Font para Termux
 echo "==> Baixando e aplicando JetBrains Mono Nerd Font..."
 mkdir -p "$HOME/.termux"
 cd "$HOME/.termux"
@@ -38,7 +41,7 @@ unzip -oq "$TMP_ZIP" "JetBrainsMonoNerdFont-Regular.ttf"
 mv -f "JetBrainsMonoNerdFont-Regular.ttf" font.ttf
 rm -f "$TMP_ZIP"
 
-# 5. Copiar dotfiles e propriedades do Termux com permissões seguras
+# 6. Copiar dotfiles e propriedades do Termux com permissões seguras
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../dotfiles" && pwd)"
 if [ -d "$DOTFILES_DIR" ]; then
     echo "==> Sincronizando dotfiles e teclas virtuais..."
@@ -51,10 +54,10 @@ if [ -d "$DOTFILES_DIR" ]; then
     chmod 644 "$HOME/.termux/termux.properties"
 fi
 
-# 6. Recarregar propriedades do Termux
+# 7. Recarregar propriedades do Termux
 termux-reload-settings
 
-# 7. Define ZSH como shell padrão
+# 8. Define ZSH como shell padrão
 echo "==> Definindo ZSH como shell padrão..."
 chsh -s zsh || true
 

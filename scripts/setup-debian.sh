@@ -14,24 +14,15 @@ fi
 
 echo "==> [Debian/Ubuntu] Iniciando configuração de ambiente..."
 
-# 1. Atualização e pacotes essenciais
-echo "==> Atualizando lista de pacotes e instalando dependências base..."
-sudo apt update && sudo apt install -y \
+# 1. Atualização completa e limpeza do sistema
+echo "==> Atualizando sistema e limpando pacotes obsoletos..."
+sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean
+
+# 2. Pacotes essenciais
+echo "==> Instalando dependências base..."
+sudo apt install -y \
     curl wget git zsh ca-certificates gnupg software-properties-common \
     apt-transport-https tree fastfetch htop gparted unzip build-essential
-
-# 2. qBittorrent via PPA oficial (Ubuntu/derivados) ou repositório nativo (Debian)
-echo "==> Instalando qBittorrent..."
-if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    if [[ "${ID:-}" =~ ^(ubuntu|linuxmint|pop|zorin)$ ]]; then
-        if command -v add-apt-repository &> /dev/null; then
-            sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable -y || true
-            sudo apt update
-        fi
-    fi
-fi
-sudo apt install -y qbittorrent
 
 # 3. ZSH & Oh My Zsh
 echo "==> Configurando ZSH e Oh My Zsh..."
